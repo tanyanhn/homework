@@ -209,6 +209,8 @@
 \begin{multicols}{2}
 \setlength{\columnseprule}{0.2pt}  
 
+\section{第三次作业}
+
 \begin{exc}
 	设$ \mathbf{S}^1 $单位圆周
 	
@@ -247,9 +249,39 @@
 \end{exc}
 
 \begin{solution}
-	对$ \forall s \in \pi_1(X, x_0), $若$ s \in U or s \in V $，由$ \pi_1(\mathbf{U}, x_0), \pi_1(\mathbf{V}, x_0) $都是平凡群可得，$ s \simeq_p e_{x_0} $.若$ s $不同时在$ U $或$ V $中，取$ s $每次进出$ U \cap V $时在$ s $上和$ U \cap V $内并且充分接近$ U \cap V $边界上的点$ x_i, y_i $（因为连续性和开集这样的点总成对出现，一个进$ x_i $一个出$ y_i $）．由于充分接近,$ x_i,y_i $之间$ s $部分路径始终同时属于$ U $或$ V $．因此可以由$ ，f_U(I,\dot{I}),f_V(I,\dot{I}) $表示，而$ U,V $都是平凡群，所以所有$ f_U,f_V $分别属于同一个$ [f]_U,[f]_V $.所以$\pi_1(\mathbf{X}, x_0) = \pi_1(\mathbf{U}, x_0) \times \pi_1(\mathbf{V}, x_0) = {1}$,即$ \pi_1(\mathbf{X}, x_0) $是平凡群．
-
+	对$ \forall s \in \pi_1(X, x_0), $若$ s \in U \text{ 或者 } s \in V $，由$ \pi_1(\mathbf{U}, x_0), \pi_1(\mathbf{V}, x_0) $都是平凡群可得，$ s \simeq_p e_{x_0} $.若$ s $不同时在$ U $或$ V $中，取$ s $每次进出$ U \cap V $时在$ s $上和$ U \cap V $内并且充分接近$ U \cap V $边界上的点$ x_i, y_i $（因为连续性和开集这样的点总成对出现，一个进$ x_i $一个出$ y_i $）．由于充分接近,$ x_i,y_i $之间$ s $部分路径始终同时属于$ U $或$ V $．因此可以由$ ，f_U(I,\dot{I}),f_V(I,\dot{I}) $表示，而$ U,V $都是平凡群，所以所有$ f_U,f_V $分别属于同一个$ [f]_U,[f]_V $.所以$\pi_1(\mathbf{X}, x_0) = \pi_1(\mathbf{U}, x_0) \times \pi_1(\mathbf{V}, x_0) = {1}$,即$ \pi_1(\mathbf{X}, x_0) $是平凡群．
 \end{solution}
+
+\section{第四次作业}
+
+\begin{exc}
+	$ \mathbf{G} $ 是拓扑群，\textit{e}是单位元, $ \alpha, \beta $ 是 $ \mathbf{G} $ 中\textit{e}处两条闭道路.
+	
+	证明: $ \alpha * \beta \simeq \alpha \cdot \beta \; \mathbf{rel} \ \dot{\mathbf{I}} $
+\end{exc}
+
+\begin{solution}
+	由道路乘法定义和$ \alpha, \beta $都是$ e $处闭道路,知$ \alpha * \beta $是\textit{e}处闭道路.因此要证$ \alpha * \beta \simeq \alpha \cdot \beta \; \mathbf{rel} \ \dot{\mathbf{I}} $,只需$ \alpha \cdot \beta $是\textit{e}处闭道路.
+	
+	因为$ \mathbf{G} $是拓扑群,且单位元是\textit{e}.因此存在连续映射将$ \alpha \times \beta $映射到$ \alpha \cdot \beta $.又因为$ \alpha \cdot \beta $的原像是$ \alpha \times \beta $ 内的 $ (e,e) $处闭道路, 并且$ \alpha \cdot \beta : \mathbf{(G \times G) \mapsto G} $ 使得 $ (\alpha \cdot \beta)(e,e) = e $
+	%因为$ \alpha,\beta $都是\textit{e}处闭道路,所以都是$ \mathbf{G} $上的拓扑开集.因此$ \alpha \cdot \beta $是一个拓扑开集即一个闭道路,由于单位元是\textit{e},即所有的拓扑开集是\textit{e}处的闭道路.
+	所以$ \alpha \cdot \beta $是\textit{e}点的闭道路,得证.
+	%,即也是,再乘\textit{e}得$ \alpha \cdot \beta \cdot e = \alpha \cdot \beta $
+\end{solution}
+
+\begin{exc}
+	证明两个自由Abel群同构,当且仅当它们有相同的秩.
+\end{exc}
+
+\begin{solution}
+	无限自由Abel群与有限Abel群显然不同构.只考虑有限秩.
+	设两个Abel群为$ \mathbf{A,B} $.基分别为$ \{a_1,a_2, \dots, a_n\}, \{b_1,b_2, \cdots , b_m\} $.则$ \forall a \in \mathbf{A},\forall b \in \mathbf{B},\ a = \sum_{i=1}^{n} k_i a_i,\ b = \sum_{j=1}^{m} l_j b_j $.
+	
+	充分性,若$ m = n $,定义映射$ f: \mathbf{A} \rightarrow \mathbf{B}, a_i \mapsto b_i $.显然\textit{f}是一个双射,否则与$ a_i, b_i $分别是$ \mathbf{A}, \mathbf{B} $的基矛盾.
+	
+	必要性,若\textit{f}是$ \mathbf{A} \rightarrow \mathbf{B} $的一个同构双射,不妨设$ n < m $,然后令$ b_i^\prime = f(a_i) \ i = 1,2 \dots n $.因为\textit{f}是一个满射,存在$ x_j $满足$ f(x_j) = b_{j} $,由基的定义存在$ t_i \in {0,1} $有$ \sum_{i = 1}^{n} t_i a_i = x_j $,结合\textit{f}是同态的.$ b_j = f(x_j) = f(\sum_{i=1}^{n} t_i a_i) = \sum_{i=1}^{n} t_i f(a_i) = \sum_{i = 1}^{n} t_i b_i^\prime $,由$ j $的任意性,知$ {b_i^\prime} $是$ {b_j} $的一组基,即$ \mathbf{B} $的基.即$ \rank \mathbf{A} = \rank \mathbf{B} $.
+\end{solution}
+
 %\section{1}
 %\label{sec:logic}
 %\input{sec/logic.tex}
