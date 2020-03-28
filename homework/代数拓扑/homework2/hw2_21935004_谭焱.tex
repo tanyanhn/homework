@@ -220,7 +220,7 @@
 \end{exc}
 
 \begin{solution}
-	假设$ \Delta $是零伦，令$ f_k(I,\dot{I}): m \mapsto \Delta(x^{km}) = (x^{km}, x^{km}) $,则$ f_k $也是零伦的．而且$ f_k $是连续的．则存在$ \widetilde{f_k}: I \rightarrow \mathbf{R} $,由$ f_k $的定义得$ \widetilde{f_k}: m \mapsto km$,因此$ \widetilde{f_k}(1) = k $,既$ [f_k] = k $与零伦函数都属于$ [f] =0 $矛盾．
+	假设$ \Delta $是零伦,不妨设$d:(I,\dot{I}) \rightarrow  ((\mathbf{S}^1 \times  \mathbf{S}^1),(1,1)), s \mapsto \Delta(e^{2\pi si}) = (e^{2\pi si}, e^{2\pi si}) $，令$ f_k:(I,\dot{I}) \rightarrow ((\mathbf{S}^1 \times  \mathbf{S}^1),(1,1)) , m \mapsto d(mk) = \Delta(e^{2\pi kmi}) = (e^{2\pi kmi}, e^{2\pi kmi}) $,则$ f_k $也是零伦的．而且$ f_k $是连续的．则存在$ \widetilde{f_k}: I \rightarrow \mathbf{R} $,由$ f_k $的定义得$ \widetilde{f_k}: m \mapsto km$,因此$ \widetilde{f_k}(1) = k $,既$ \text{deg}f_k = k $与零伦函数都满足$ \text{deg}f =0 $矛盾．
 	
 	$ \eta $取$ g_k(I,\dot{I}) = \eta(x^{km}) = (x^{km},　1) $同上可得不是零伦．
 \end{solution}
@@ -236,9 +236,12 @@
 
 \begin{solution}
 	\begin{itemize}
-		\item [(i)] 因为$ \pi_1 (\mathbf{S}, 1) $同构于$ \mathbb{Z} $,而$ \pi_1 ( \mathbf{D}^2 , x_0) = \{1\}, \forall x_0 \in  \mathbf{D}^2 $.收缩时保持$ \pi_1 $的性质，所以$ \mathbf{S}^1 $不是$ \mathbf{D}^2 $的收缩．
+		\item [(i)] 若$ \mathbf{S}^1 $不是$ \mathbf{D}^2 $的收缩核.不妨设$g: \mathbf{D}^2 \rightarrow \mathbf{S}^1 $是一个连续映射,满足在$\mathbf{S}^1$上是$1_{\mathbf{S}^1}$定义$ i(x): \mathbf{S}^1 \mapsto \mathbf{D}^2, x \rightarrow x $，$ i \circ g = 1_{\mathbf{S}^1} $，则它们诱导的在范畴$ \pi_1(\mathbf{D}^2, 1), \pi_1(\mathbf{S}^1, 1) $上的函子$ i_*, g_* $满足$ g_* \circ i_* = 1_{\mathbf{S}^1} $,而$ i_*:  \pi_1(\mathbf{S}^1, 1) \rightarrow \pi_1(\mathbf{D}^2, 1) \Longleftrightarrow Z \rightarrow {0} $,不存在合适的函子$ g_* $使得$ g_* \circ i_*: {0} \rightarrow \mathbf{Z} \Longleftrightarrow 1_{\mathbf{Z}} $.
 		
-		\item [(ii)] 假设不存在不动点，则$ \forall x \in \mathbf{D}^2, x \neq f(x), f(x) \in  \mathbf{D}^2$,因此以$ f(x) $为起点作一条射线过$ x $交$ \mathbf{S}^1 $于一点设为$ g(x) $．则$ g: \mathbf{D}^2 \rightarrow \mathbf{S}^1 $是一个满射,因为$ g(x) $将$ \mathbf{S}^1 $上的点映射到自身．定义$ i(x): \mathbf{S}^1 \mapsto \mathbf{D}^2, x \rightarrow x $，$ i \circ g = 1_{\mathbf{S}^1} $，则它们诱导的在范畴$ \pi_1(\mathbf{D}^2, 1), \pi_1(\mathbf{S}^1, 1) $上的函子$ i_*, g_* $满足$ g_* \circ i_* = 1_{\mathbf{S}^1} $,而$ i_*:  \pi_1(\mathbf{S}^1, 1) \rightarrow \pi_1(\mathbf{D}^2, 1) \Longleftrightarrow Z \rightarrow {0} $,不存在合适的函子$ g_* $使得$ g_* \circ i_*: {0} \rightarrow \mathbf{Z} \Longleftrightarrow 1_{\mathbf{Z}} $.
+		%因为$ \pi_1 (\mathbf{S}, 1) $同构于$ \mathbb{Z} $,而$ \pi_1 ( \mathbf{D}^2 , x_0) = \{1\}, \forall x_0 \in  \mathbf{D}^2 $.收缩时保持$ \pi_1 $的性质，所以$ \mathbf{S}^1 $不是$ \mathbf{D}^2 $的收缩．
+		
+		\item [(ii)] 假设不存在不动点，则$ \forall x \in \mathbf{D}^2, x \neq f(x), f(x) \in  \mathbf{D}^2$,因此以$ f(x) $为起点作一条射线过$ x $交$ \mathbf{S}^1 $于一点设为$ g(x) $．则$ g: \mathbf{D}^2 \rightarrow \mathbf{S}^1 $是一个满射,因为$ g(x) $在$ \mathbf{S}^1 $上是 $1_{\mathbf{S}^1}$.并且\textit{g}是一个连续映射.由第一问结论,这是矛盾的.
+		%定义$ i(x): \mathbf{S}^1 \mapsto \mathbf{D}^2, x \rightarrow x $，$ i \circ g = 1_{\mathbf{S}^1} $，则它们诱导的在范畴$ \pi_1(\mathbf{D}^2, 1), \pi_1(\mathbf{S}^1, 1) $上的函子$ i_*, g_* $满足$ g_* \circ i_* = 1_{\mathbf{S}^1} $,而$ i_*:  \pi_1(\mathbf{S}^1, 1) \rightarrow \pi_1(\mathbf{D}^2, 1) \Longleftrightarrow Z \rightarrow {0} $,不存在合适的函子$ g_* $使得$ g_* \circ i_*: {0} \rightarrow \mathbf{Z} \Longleftrightarrow 1_{\mathbf{Z}} $.
 	\end{itemize}
 \end{solution}
 
@@ -249,7 +252,7 @@
 \end{exc}
 
 \begin{solution}
-	对$ \forall s \in \pi_1(X, x_0), $若$ s \in U \text{ 或者 } s \in V $，由$ \pi_1(\mathbf{U}, x_0), \pi_1(\mathbf{V}, x_0) $都是平凡群可得，$ s \simeq_p e_{x_0} $.若$ s $不同时在$ U $或$ V $中，取$ s $每次进出$ U \cap V $时在$ s $上和$ U \cap V $内并且充分接近$ U \cap V $边界上的点$ x_i, y_i $（因为连续性和开集这样的点总成对出现，一个进$ x_i $一个出$ y_i $）．由于充分接近,$ x_i,y_i $之间$ s $部分路径始终同时属于$ U $或$ V $．因此可以由$ ，f_U(I,\dot{I}),f_V(I,\dot{I}) $表示，而$ U,V $都是平凡群，所以所有$ f_U,f_V $分别属于同一个$ [f]_U,[f]_V $.所以$\pi_1(\mathbf{X}, x_0) = \pi_1(\mathbf{U}, x_0) \times \pi_1(\mathbf{V}, x_0) = {1}$,即$ \pi_1(\mathbf{X}, x_0) $是平凡群．
+	对$ \forall s \in \pi_1(X, x_0), $若$ s \in U \text{ 或者 } s \in V $，由$ \pi_1(\mathbf{U}, x_0), \pi_1(\mathbf{V}, x_0) $都是平凡群可得，$ s \simeq_p e_{x_0} $.若$ s $不同时在$ U $或$ V $中，取$ s $每次进出$ U \cap V $时在$ s $上和$ U \cap V $内并且充分接近$ U \cap V $边界上的点$ x_i, y_i $（因为连续性和开集这样的点总成对出现，一个进$ x_i $一个出$ y_i $）．由于充分接近,由$ x_i,y_i $划分$ s $产生的所有路径始终同时属于$ U $或$ V $．因为这些路径都在$U \cap V$中, 连接上$ x_0 $产生的所有闭道路可以由$ ，f_U(I,\dot{I}),f_V(I,\dot{I}) $表示，而$ U,V $都是平凡群，所以所有$ f_U,f_V $分别属于同一个$ [f]_U,[f]_V $.所以$\pi_1(\mathbf{X}, x_0) = \pi_1(\mathbf{U}, x_0) \times \pi_1(\mathbf{V}, x_0) = {1}$,即$ \pi_1(\mathbf{X}, x_0) $是平凡群．
 \end{solution}
 
 \section{第四次作业}
@@ -261,12 +264,32 @@
 \end{exc}
 
 \begin{solution}
-	由道路乘法定义和$ \alpha, \beta $都是$ e $处闭道路,知$ \alpha * \beta $是\textit{e}处闭道路.因此要证$ \alpha * \beta \simeq \alpha \cdot \beta \; \mathbf{rel} \ \dot{\mathbf{I}} $,只需$ \alpha \cdot \beta $是\textit{e}处闭道路.
+	%由道路乘法定义和$ \alpha, \beta $都是$ e $处闭道路,知$ \alpha * \beta $是\textit{e}处闭道路.因此要证$ \alpha * \beta \simeq \alpha \cdot \beta \; \mathbf{rel} \ \dot{\mathbf{I}} $,只需$ \alpha \cdot \beta $是\textit{e}处闭道路.
 	
-	因为$ \mathbf{G} $是拓扑群,且单位元是\textit{e}.因此存在连续映射将$ \alpha \times \beta $映射到$ \alpha \cdot \beta $.又因为$ \alpha \cdot \beta $的原像是$ \alpha \times \beta $ 内的 $ (e,e) $处闭道路, 并且$ \alpha \cdot \beta : \mathbf{(G \times G) \mapsto G} $ 使得 $ (\alpha \cdot \beta)(e,e) = e $
+	%因为$ \mathbf{G} $是拓扑群,且单位元是\textit{e}.因此存在连续映射$f(\alpha,\beta) $映射到$ \alpha \cdot \beta $.又因为$ \alpha \cdot \beta $的原像是$\mathbf{G \times G}$ 内的 $ (e,e) $处闭道路, 并且$ \alpha \cdot \beta : \mathbf{(G \times G) \mapsto G} $ 使得 $ (\alpha \cdot \beta)(e,e) = e $
 	%因为$ \alpha,\beta $都是\textit{e}处闭道路,所以都是$ \mathbf{G} $上的拓扑开集.因此$ \alpha \cdot \beta $是一个拓扑开集即一个闭道路,由于单位元是\textit{e},即所有的拓扑开集是\textit{e}处的闭道路.
-	所以$ \alpha \cdot \beta $是\textit{e}点的闭道路,得证.
+	%所以$ \alpha \cdot \beta $是\textit{e}点的闭道路,得证.
 	%,即也是,再乘\textit{e}得$ \alpha \cdot \beta \cdot e = \alpha \cdot \beta $
+	因为$\beta$是单位元为\textit{e}的拓扑群$\mathbf{G}$内闭道路.因此存在$\beta^{-1}, \beta \cdot \beta^{-1} = \gamma$, 设\textit{e}处常道路是$\gamma$,取连续函数
+	\begin{align*}
+		&f: (I, \dot{I}) \rightarrow \mathbf{G}, \\
+		&f(s) =
+		\begin{cases}
+		\alpha(2s) \qquad &s \in [0,\frac{1}{2}) \\
+		\beta(2s - 1) \qquad &s \in [\frac{1}{2}, 1] \\
+		\end{cases}\\
+		&g: (I, \dot{I}) \rightarrow \mathbf{G}, \\
+		&g(s) = 
+		\begin{cases}
+		\gamma(2s) = e \qquad &s \in [0, \frac{1}{2}) \\
+		\beta^{-1}(2s - 1) \qquad &s \in [\frac{1}{2}, 1] \\
+		\end{cases}
+	\end{align*}
+	显然\textit{f,g}分别是$\alpha * \beta \text{ 和 } \gamma * \beta^{-1}$的函数表达.所以$(\alpha * \beta) \cdot (\gamma * \beta^{-1}) = \begin{cases}(\alpha(2s) \cdot \gamma(2s)) &\quad s \in [0,1/2)\\
+	(\beta(2s-1) \cdot \beta^{-1}(2s-1)) &\quad s \in [1/2. 1]
+	\end{cases} = (\alpha \cdot \gamma) * (\beta \cdot \beta^{-1}) = \alpha * \gamma $, 另一边由群运算的结合律$ (\alpha \cdot \beta) \cdot (\gamma \cdot \beta^{-1}) = \alpha $.
+	
+	$\alpha$ 和 $\alpha * \gamma$ 显然定端同伦.则存在连续函数H使得$t = 0,1$两端是$H(s,0) = (\alpha*\gamma)(s)$和$H(s,1) = \alpha(s)$.因为$\mathbf{G}$是拓扑群,令$K(s,t) = H(s,t) \cdot (\gamma * \beta^{-1})(s)$,$K(s,t)$是一个连续映射,结合上面点乘推导满足$K(s,0) = (\alpha * \beta)(s),K(s,1) = (\alpha \cdot \beta)(s)$所以$\alpha * \beta, \alpha \cdot \beta$定端同伦.
 \end{solution}
 
 \begin{exc}
@@ -274,12 +297,13 @@
 \end{exc}
 
 \begin{solution}
-	无限自由Abel群与有限Abel群显然不同构.只考虑有限秩.
+	无限自由Abel群与有限自由Abel群显然不同构.只考虑有限秩.
+	
 	设两个Abel群为$ \mathbf{A,B} $.基分别为$ \{a_1,a_2, \dots, a_n\}, \{b_1,b_2, \cdots , b_m\} $.则$ \forall a \in \mathbf{A},\forall b \in \mathbf{B},\ a = \sum_{i=1}^{n} k_i a_i,\ b = \sum_{j=1}^{m} l_j b_j $.
 	
 	充分性,若$ m = n $,定义映射$ f: \mathbf{A} \rightarrow \mathbf{B}, a_i \mapsto b_i $.显然\textit{f}是一个双射,否则与$ a_i, b_i $分别是$ \mathbf{A}, \mathbf{B} $的基矛盾.
 	
-	必要性,若\textit{f}是$ \mathbf{A} \rightarrow \mathbf{B} $的一个同构双射,不妨设$ n < m $,然后令$ b_i^\prime = f(a_i) \ i = 1,2 \dots n $.因为\textit{f}是一个满射,存在$ x_j $满足$ f(x_j) = b_{j} $,由基的定义存在$ t_i \in {0,1} $有$ \sum_{i = 1}^{n} t_i a_i = x_j $,结合\textit{f}是同态的.$ b_j = f(x_j) = f(\sum_{i=1}^{n} t_i a_i) = \sum_{i=1}^{n} t_i f(a_i) = \sum_{i = 1}^{n} t_i b_i^\prime $,由$ j $的任意性,知$ {b_i^\prime} $是$ {b_j} $的一组基,即$ \mathbf{B} $的基.即$ \rank \mathbf{A} = \rank \mathbf{B} $.
+	必要性,若\textit{f}是$ \mathbf{A} \rightarrow \mathbf{B} $的一个同构双射,不妨设$ n < m $,然后令$ b_i^\prime = f(a_i) \ i = 1,2 \dots n $.因为\textit{f}是一个满射,存在$ x $满足$ f(x) = b, \ \forall b \in \mathbf{B} $,由基的定义存在$ t_i \in {0,1} $有$ \sum_{i = 1}^{n} t_i a_i = x $,结合\textit{f}是同态的.$ b = f(x) = f(\sum_{i=1}^{n} t_i a_i) = \sum_{i=1}^{n} t_i f(a_i) = \sum_{i = 1}^{n} t_i b_i^\prime $,由$ b $的任意性和\textit{f}是同构双射,知$ {b_i^\prime} $是$ \mathbf{B} $的基.即$ \rank \mathbf{A} = \rank \mathbf{B} $.
 \end{solution}
 
 %\section{1}
