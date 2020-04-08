@@ -235,6 +235,30 @@
 \begin{solution}
 	对象$ \textbf{S}_n $ 已定义为 $ \textbf{S}_n(\textbf{X}) $. 如果函数 $ f: \textbf{X} \rightarrow \textbf{Y} $ 是连续的.定义 $ \textbf{S}_n(f): \textbf{S}_n(\textbf{X}) \rightarrow \textbf{S}_n(\textbf{Y}), x_n \mapsto f(x_n) $.由$ f $的连续性$ f(x_n) = f \circ x_n : \Delta^n \rightarrow \textbf{Y} $是一个连续映射$ \sigma: \Delta^n \rightarrow \textbf{Y} $,即定义是合理的.当$ f = 1_{\textbf{X}} $时$ \textbf{S}_n(f)(x_n) = f(x_n) = f \circ x_n = x_n $是恒等映射.并且$ \textbf{S}_n(fg)(x_n) = (f \circ g)(x_n) = f(g(x_n)) = \textbf{S}_n(f)\textbf{S}_n(g)(x_n) $.因此$ \textbf{S}_n $是一个函子.
 \end{solution}
+
+\section{第六次作业}
+\begin{exc}
+	$X$ 是拓扑空间. $\sigma : \Delta^1 \rightarrow X $ 连续,直接写出$ P^X_1(\sigma)$ 的定义.
+\end{exc}
+
+\begin{solution}
+	令$ \beta_2 = [a_0, b_0, b_1] - [a_0, a_1, b_1], a_i = (e_i, 0),b_i = (e_i, 1) $.
+	则$ \beta_2: \Delta_2 \rightarrow X \times I, X = [e_1, e_2] $.对$\forall e \in \Delta^2, e = (1 -t)[e_0, e_1] + t e_2 $,定义$ P^X_1(\sigma): \Delta^2 \rightarrow X \times I, t \mapsto (\sigma \times t)_\# \beta_2 $,然后线性拓展得到$ S_1(X) $上的全定义$ P^X_0: S_1(X) \rightarrow S_2(X \times I) $.下面验证满足两个条件.令$ \delta $为$ \Delta^1 $上的恒等映射.
+	
+	$ P^X_1 \sigma_\#(\delta) = P^X_1(\sigma \circ \delta) = P^X_1(\sigma): t \mapsto (\sigma \times t)_\# \beta_2 ; $
+	
+	$ (\sigma \times 1)_\# P^{\Delta^1}_1(\delta): t \mapsto (\sigma \times 1)_\# (\delta \times t)_\# \beta_2 = (\sigma \circ \delta \times t)_\# \beta_2 = (\sigma \times t)_\#\beta_2 = P^X_1 \sigma_\#(\delta);  $
+	\begin{align*}
+		&\ (\partial_2 P^X_1 + P^X_0 \partial_1)(\sigma) \\
+		&= (\partial_2((\delta \times I)_\# \beta_2) + P^X_0(\partial_1(\delta)))(\sigma) \\
+		&= (([b_0,b_1] - [a_0,b_1] + [a_0,b_0]) - ([a_1,b_1] - [a_0,b_1] + [a_0,a_1])\\& \ + P^X_0(e_1 - e_0))(\sigma) \\ 
+		&= ([b_0,b_1] - [a_0,a_1] + [a_0,b_0] - [a_1,b_1] \\ &\ + [(e_1,0),(e_1,1)] - [(e_0,0), (e_0,1)])(\sigma) \\
+		&= ([b_0,b_1] - [a_0,a_1])(\sigma) \\
+		&= ([(e_0,1),(e_1,1)] - [(e_0,1), (e_1,1)])(\sigma) \\
+		%&= (\sigma([e_0,e_1]),1) - (\sigma([e_0,e_1]),0) \\
+		&= (\lambda^X_{1\#} - \lambda^X_{0\#})(\sigma)
+	\end{align*}
+\end{solution}
 %\section{1}
 %\label{sec:logic}
 %\input{sec/logic.tex}

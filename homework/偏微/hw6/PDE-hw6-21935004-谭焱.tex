@@ -330,9 +330,9 @@
 
 \begin{exc}
   6.  Given a smooth vector field \textbf{b} on $\mathbb{R}^n$, let $\mathbf{x}(s) = \mathbf{x}(s,x,t)$ solve the ODE
-  \begin{eqnarray} \nonumber
+  \begin{eqnarray} \label{eq:6:6:6}
     \begin{cases}
-      \dot{\mathbf{x}} = \mathbf{b}(x) \qquad (s \in \mathbb{R}) \\
+      \dot{\mathbf{x}} = \mathbf{b}(\mathbf{x}) \qquad (s \in \mathbb{R}) \\
       \mathbf{x}(t) = x.
     \end{cases}
   \end{eqnarray}
@@ -378,12 +378,19 @@
       &= \textmd{div}\, \mathbf{b}(x)J.
     \end{align*}
 
-  \item Boundary condition is obvious, since $J(0,x,0) = \det D_x x(0,x,0) = \det D_x x = 1 \textmd{ and } x(0,x,0) = x$.And $g(\mathbf{x}) J$ means that transfer coordinate$\mathbf{x}(s,x,t)$ to $\mathbf{x}$. So it value $u(x,t)$ won't change while $\mathbf{x}$ is constant.It follows that $0 = \frac{\partial}{\partial s}(u(\mathcal{x},s)J) = u_t(x,s)J + u(x,s)J_s = u_t(x,s)J + u(x,s)\textmd{div}\, (\mathbf{b}J) = (u_t + \textmd{div}\, (u\mathbf{b}))J = 0$.We know that $J$ won't be zero when $t = s$, therefore (\ref{eq:6:5:4}) is solved by $u(x,t)$.
+  \item Boundary condition is obvious, since $J(0,x,0) = \det D_x x(0,x,0) = \det D_x x = 1 \textmd{ and } x(0,x,0) = x$.
+
+    % $u(\mathbf{x}(s,x,t),s)J(s,x,t) = g(\mathbf{x}(0,\mathbf{x}(s,x,t),s))J(0,\mathbf{x}(s,x,t),s)J(s,x,t)$. So $u(\mathbf{x},s)J$ means that intergral in line \textit{l} which is one of solutions of (\ref{eq:6:6:6}), and $J(0,\mathbf{x}(s,x,t),s)J(s,x,t)$ transfer intergral coordinate from $ds$ in line \textit{l} to $d\mathbf{x}$ in $\mathbb{R}^n$, combining with $g(\mathbf{x}(0,\mathbf{x}(s,x,t),s)) = g(\mathbf{x}(0,x,t))$ is constants for $s$. Therefore $\frac{\partial}{\partial_s}(u(\mathbf{x},s)J) = 0$
+
+    $\frac{\partial}{\partial s}(u(\mathbf{x},s)J) = u_t(\mathbf{x},s)J + D_x u \cdot \mathbf{x}_s + u(x,s)J_s = J(u_t + D_x u \cdot \mathbf{b}(x) + u \textmd{ div}\, \mathbf{b}(x) ) = J(u_t(x,s) + u(x,s)\textmd{div}\, (\mathbf{b}J)) = (u_t + \textmd{div}\, (u\mathbf{b}))J = 0$.
+
+    $
+    \left u(\mathbf{x},s)J\right|_{s=t} = \left u(\mathbf{x},s)J\right|_{s=0} \Longleftrightarrow u(x,t) =  u(\mathbf{x}(t,x,t),t)J(t,x,t) = u(\mathbf{x}(0,x,t),0)J(0,x,t) = g(\mathbf{x}(0,x,t))J(0,x,t)$, therefore (\ref{eq:6:5:4}) is solved by $u(x,t)$.
   \end{enumerate}
 \end{solution}
 
 \begin{exc}
-  8.  Confirm that the formula $u = g(x - t \mathbf{F}^\prime (u))$ from 3.2.5 provides an implicit solution for the conservation law
+  8.  Confirm that the formula $u = g(x - t \mathbf{F}^\prime (u))$ from $\mathcal{x}3.2.5$ provides an implicit solution for the conservation law
   \begin{equation}
     \label{eq:6:6:1}
     u_t + \mathbf{F}(u)_x = 0.

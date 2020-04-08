@@ -316,7 +316,7 @@
       &F(\mathbf{p}(s), z(s), \mathbf{x}(s)) = (x_1,2x_2,1) \cdot \mathbf{p}(s) - 3 z(s) = 0 \\
      % &\dot{\mathbf{p}}(s) = - 3 \mathbf{p}(s) \\
       &\dot{z}(s) = 3 z(s) \\
-      &\dot{\mathbf{x}}(s) = (x_1, 2 x_2, 1) \\
+      &\dot{\mathbf{x}}(s) = (x_1, 2 x_2, 1) 
     \end{align*}
     Solving equations get $\mathbf{x}(s) = (x^0_1e^{s},x^0_2e^{2s},s), z(s) = z^0 e^{3s}$, eliminating $x^0_1,x^0_2,z^0$ to obtain $u(x_1,x_2,x_3) = g(\frac{x_1}{e^{x_3}}, \frac{x_2}{e^{x_3}}) e^{3s}$.
 
@@ -325,9 +325,9 @@
         &F(\mathbf{p}(s), z(s), \mathbf{x}(s)) = (z(s),1) \cdot \mathbf{p}(s) - 1 = 0 \\
        % &\dot{\mathbf{p}}(s) = (z(s),1) \\
         &\dot{z}(s) = 1 \\
-        &\dot{\mathbf{x}}(s) = (z(s),1) \\
+        &\dot{\mathbf{x}}(s) = (z(s),1).
       \end{align*}
-      Solving equations get $z(s) = s + z_0, \mathbf{x}(s) = (\frac{1}{2}s^2 + z_0 s + x^0_1, s + x^0_1)$. 
+      Solving equations get $z(s) = s + z_0, \mathbf{x}(s) = (\frac{1}{2}s^2 + z_0 s + x^0_1, s + x^0_2)$. By $u(x_1,x_1) = \frac{1}{2}x_1 \Longrightarrow z_0 = \frac{1}{2}x^0_1 = \frac{1}{2}x^0_2$, eliminating $z_0,x^0_1,x^0_2$ obtain $u(x_1,x_2) = \frac{1}{2}x_2 + \frac{x_2 - x_1}{2 - x_2}$.
   \end{enumerate}
 \end{solution}
 
@@ -335,7 +335,7 @@
   6.  Given a smooth vector field \textbf{b} on $\mathbb{R}^n$, let $\mathbf{x}(s) = \mathbf{x}(s,x,t)$ solve the ODE
   \begin{eqnarray} \nonumber
     \begin{cases}
-      \dot{\mathbf{x}} = \mathbf{b}(x) \qquad (s \in \mathbb{R}) \\
+      \dot{\mathbf{x}} = \mathbf{b}() \qquad (s \in \mathbb{R}) \\
       \mathbf{x}(t) = x.
     \end{cases}
   \end{eqnarray}
@@ -371,11 +371,26 @@
 \end{exc}
 
 \begin{solution}
-  
+  \begin{enumerate} [(a)]
+  \item Unfold $J$ and differential $J$
+    \begin{align*}
+      J(s,x,t) &= \sum \prod_{i = 1}^n (-1)^{\sigma} x^i_{\sigma(i)} \\
+      J_s &= \sum \sum_{j = 1}^n (\prod_{i \neq j} (-1)^{\sigma} x^i_{\sigma(i)}) x^j_{\sigma(j) s}  \\
+               &= \sum \sum _{j = 1}^n (\prod_{i=1}^n (-1)^{\sigma} x^i_{\sigma(i)}) (\mathbf{b}^j(x)(s -t) + x)_{\sigma(j)s} \\
+               &=  \sum \sum _{j = 1}^n (\prod_{i=1}^n (-1)^{\sigma} x^i_{\sigma(i)}) \mathbf{b}^j_j(x)x^j_{\sigma(j)}  \\
+      &= \textmd{div}\, \mathbf{b}(x)J.
+    \end{align*}
+
+  \item Boundary condition is obvious, since $J(0,x,0) = \det D_x x(0,x,0) = \det D_x x = 1 \textmd{ and } x(0,x,0) = x$.
+
+    Since (\ref{eq:6:5:2}) and $J(t,x,t) = 1$, $J = e^{\textmd{div}\, \mathbf{b}(x)(s - t)}$. So that $J(0,x,s)J(s,x,t)$ 
+
+    And $g(\mathbf{x}) J$ means that transfer coordinate$\mathbf{x}(s,x,t)$ to $\mathbf{x}$. So it value $u(x,t)$ won't change while $\mathbf{x}$ is constant.It follows that $0 = \frac{\partial}{\partial s}(u(\mathbf{x},s)J) = u_t(\mathbf{x},s)J + D_x u \cdot \mathbf{x}_s + u(x,s)J_s = J(u_t + D_x u \cdot \mathbf{b}(x) + u \textmd{ div}\, \mathbf{b}(x) ) = J(u_t(x,s) + u(x,s)\textmd{div}\, (\mathbf{b}J)) = (u_t + \textmd{div}\, (u\mathbf{b}))J = 0$.We know that $J$ won't be zero when $t = s$, therefore (\ref{eq:6:5:4}) is solved by $u(x,t)$.
+  \end{enumerate}
 \end{solution}
 
 \begin{exc}
-  8.  Confirm that the formula $u = g(x - t \mathbf{F}^\prime (u))$ from 3.2.5 provides an implicit solution for the conservation law
+  8.  Confirm that the formula $u = g(x - t \mathbf{F}^\prime (u))$ from $\mathcal{x}3.2.5$ provides an implicit solution for the conservation law
   \begin{equation}
     \label{eq:6:6:1}
     u_t + \mathbf{F}(u)_x = 0.
@@ -383,7 +398,17 @@
 \end{exc}
 
 \begin{solution}
-  
+  The initial condition is trival, then confirm the function
+  \begin{align*}
+    &u_t + \mathbf{F}(u)_x = 0 \Longleftrightarrow \\
+    &u_t = D g \cdot (x - t\mathbf{F}^\prime(u))(- \mathbf{F}^\prime(u) - t \mathbf{F}^{\prime \prime}(u) u_t) \textmd{ While } 1 + t \mathbf{F}^{\prime \prime}(u) \neq 0 \\
+    &u_t = - \frac{D g \cdot \mathbf{F}^\prime(u)}{1 + D g \cdot t \mathbf{F}^{\prime \prime}(u)} \\
+    &\mathbf{F}(u)_x = D \mathbf{F}(u) = \mathbf{F}^\prime(u) \cdot D u \\
+    &\frac{\partial}{\partial x_i} u = \frac{\partial}{\partial x_i} g(x - t \mathbf{F}^\prime (u)) \\
+    &\qquad \; = g_{x_i} (1 - t \mathbf{F}^{\prime \prime}(u) \cdot u_{x_i}) \textmd{ need the same requirement above so that } \\
+    &D u = \frac{D g}{1 + t \mathbf{F}^{\prime \prime}(u)} \\
+    &u_t - \mathbf{F}^\prime(u) \cdot D u = 0
+  \end{align*}
 \end{solution}
 
 
@@ -431,4 +456,4 @@
 %%% TeX-master: t
 %%% End:
 
-\message{ !name(PDE-hw6-21935004-\unexpanded{谭焱}.tex) !offset(-434) }
+\message{ !name(PDE-hw6-21935004-\unexpanded{谭焱}.tex) !offset(-459) }
