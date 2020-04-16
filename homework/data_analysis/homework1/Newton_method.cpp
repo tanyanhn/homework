@@ -17,10 +17,10 @@ class my_f_params{
  * Using vector<double> initiallize and return.
  * get() return these numbers,
  */
-    vector<double> a;
+    vector<vector<double>> a;
 public:
-    explicit my_f_params(const vector<double>& init) : a(init){}
-    vector<double>& get(){
+    explicit my_f_params(const vector<vector<double>>& init) : a(init){}
+    vector<vector<double>>& get(){
         return a;
     }
 };
@@ -43,7 +43,7 @@ double my_f(double x, void* p){
            "Default function is polunomial, otherwise you have to specialize your my_f function");
     my_f_params * params = static_cast<my_f_params *>(p);
     double d = 0;
-    vector<double> a = params->get();
+    vector<double> a = params->get()[0];
     for_each(a.begin(), a.end(), [&d, x] (int k) {d = d * x + k;} );
     return d;
 }
@@ -107,8 +107,10 @@ double Newtonm(int steps, double it, gsl_function& F, double epsilon = 1e-10, do
 int main(int argc, char *argv[])
 {
     double coefficient[] = {4.0, -2.0, 0.0, 3.0};
-    my_f_params params(vector<double>(coefficient,
-                                      coefficient + sizeof(coefficient)/sizeof(double)));
+    vector<vector<double>> temp;
+    temp.push_back(vector<double>(coefficient,
+                                  coefficient + sizeof(coefficient)/sizeof(double)));
+    my_f_params params(temp);
     gsl_function F1 = f_factory<Polynomial>(&my_f<Polynomial>, &params);
     double x = -1;
     int steps = 10;

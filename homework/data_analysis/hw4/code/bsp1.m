@@ -1,0 +1,1 @@
+plotTruncatedPowerFunc2Bsplines(1);
