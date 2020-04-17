@@ -9,15 +9,19 @@ const double epsilon = 1e-5;
 
 double f1(double x){
     assert(x >=0 - epsilon && x <= sqrt(3) + epsilon && "x out of domain.");
-    if(abs(x) < epsilon)
+    if(abs(x) < epsilon && x < 0)
         return 2/sqrt(3);
+    else if (abs(3 - x*x) < epsilon && x*x > 3)
+        return 2.0/3 * sqrt(3);
     return 2.0/3 * (sqrt(x) + sqrt(3 - x*x));
 }
 
 double f2(double x){
     assert(x >=0 - epsilon && x <= sqrt(3) + epsilon && "x out of domain.");
-    if(abs(x) < epsilon)
+    if(abs(x) < epsilon && x < 0)
         return -2/sqrt(3);
+    else if (abs(3 - x*x) < epsilon && x*x > 3)
+        return 2.0/3 * sqrt(3);
     return 2.0/3 * (sqrt(x) - sqrt(3 - x*x));
 }
 

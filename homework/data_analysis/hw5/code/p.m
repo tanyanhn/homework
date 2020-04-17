@@ -27,6 +27,6 @@ for i=2:1:3
         [x,temp] = plotTruncatedPowerFunc2Bsplines(i,start + j, a,b);
         m = data(2,j+1) * temp + m;
     end
-    plot(x,m)
+    plot(x,m);
     axis([start-3 start+n+3 -0.5 1.5]);
 end

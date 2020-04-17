@@ -2,6 +2,7 @@ function [x,m] = plotTruncatedPowerFunc2Bsplines(n,k,a,b)
    % f = zero(n+2,n+2);
    x = a:0.01:b;
    y = zeros(n+2,n+2,(b-a)*100 +1);
+   m = zeros((b-a)*100 + 1,1);
     for j = 1:1:(1+n+1)
         for i = j:1:(1+n+1)
             if j ==1
@@ -25,7 +26,7 @@ function [x,m] = plotTruncatedPowerFunc2Bsplines(n,k,a,b)
             end
         end
     end
-    m = (n+1)*m
+    m = (n+1)*m;
     %figure;
     %plot(x,(n+1)*m);
     %axis([0 n+3 0 1]);

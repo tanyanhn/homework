@@ -20,7 +20,7 @@ for i=0:1:2
        x0 = data(5 * j - 3,1);
        param1 = data(5 * j - 2,:);
        param2 = data(5 * j , :);
-       x = a:0.01:b;
+       x = a-0.01:0.01:b+0.01;
        y1 = param1(1,1) * (x - x0).^3 + param1(1,2) * (x - x0).^2 + param1(1,3) * (x - x0).^1 + param1(1,4);
        y2 = param2(1,1) * (x - x0).^3 + param2(1,2) * (x - x0).^2 + param2(1,3) * (x - x0).^1 + param2(1,4);
        plot(y1,y2);

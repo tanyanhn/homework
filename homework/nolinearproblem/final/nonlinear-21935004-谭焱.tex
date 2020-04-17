@@ -132,6 +132,7 @@
 \newtheorem{exc}[exm]{Exercise}
 \newtheorem{frm}[thm]{Formula}
 \newtheorem{ntn}{Notation}
+\newtheorem{pro}[exm]{Problem}
 
 % for complying with the convention in the textbook
 \newtheorem{rmk}[thm]{Remark}
@@ -179,7 +180,7 @@
 % \rhead{Fall 2018}
 
 
-\setcounter{chapter}{3}
+\setcounter{chapter}{0}
 \pagenumbering{arabic}
 % \setcounter{page}{0}
 
@@ -195,7 +196,7 @@
 
 % each chapter is factored into a separate file.
 
-\chapter{Homework 21935004 谭焱}
+\chapter{21935004 谭焱}
 % \begin{lstlisting}
 %   int main(){
 %   double d;
@@ -210,118 +211,46 @@
 % \begin{multicols}{2}
 %   \setlength{\columnseprule}{0.2pt}
 
-\section{第七次作业}\label{sec:1}
 
+\section{Problem}\label{sec:1}
 
+\begin{pro}
+  Use Frobenius method to find the complete asymptotic series expansion for the 2nd-order \textit{modified bessel Differential Equation of order} $\nu$:
+  \[y^{\prime \prime} + \frac{1}{x} y^\prime \mp \left(1 \pm \frac{\nu^2}{x^2}\right)y = 0\]
+  near $x = 0$. How many independent solutions can be found as a Frobenius series?
 
-\begin{exc}
-  证$\varphi$是自然,即$h:(X,x_0) \rightarrow (Y,y_0)$连续,则有交换图表
-\begin{center}
-  \begin{tabular}{ccc}
-  %  \begin{equation*}
-  %    \begin{aligned}
-        $\pi_1(X,x_0)$ & $\overset{\varphi}{\longrightarrow}$ & $H_1(X)$ \\
-        $\downarrow h_*$ &                     &$\downarrow h_\#      $\\
-        $\pi_1(Y,y_0) $ & $\overset{\varphi}{\longrightarrow}$ &$ H_1(Y)$
-  %    \end{aligned}
-  %  \end{equation*}
-  \end{tabular}
-  \end{center}
-\end{exc}
+  \textbf{Hint:} Disscuss different root scenarios of the indicial polynomial
+  \[P(\alpha) = \alpha^2 - \nu^2\]
+\end{pro}
 
 \begin{solution}
-  令$f:I\rightarrow X$是$X$中$x_0$处一条闭道路,$\eta: \Delta^1 \rightarrow I$是同胚$(1-t)e_0 + te_1 \mapsto t$.则
-  \begin{align*}
-    \varphi \circ h_*([f]) = \varphi([h \circ f]) = \textmd{cls}\,h \circ f \circ \eta \\
-    h_\# \circ \varphi([f]) = h_\#(\textmd{cls}\, f \circ \eta) = \textmd{cls}\, h \circ f \circ \eta
-  \end{align*}
-  所以交换图表成立.
   
 \end{solution}
 
 
-\begin{exc}
-  如果\textit{f}是$X$上一条道路,$f^{-1}$是逆道路,则存在$\zeta \in S_2(X)$
-  \[\textmd{使 } \partial \zeta = f \circ \eta + f^{-1} \circ \eta\]
-\end{exc}
+\begin{pro}
+  Identify the drastic change in the behavior of the solution to the ODE
+  \[\varepsilon y^{\prime \prime} + \left( x^2 - \frac{1}{4} \right) y^\prime - e^{2x -1} y = 0, 0 < x < 1\]
+  with $y(0) = 2$ and $y(1) = 3$ with the method of matched asymptotic expansions. Find the leading order, composite expansion of the exact solution.
+\end{pro}
 
 \begin{solution}
-  定义$\Delta^2 \rightarrow X$上的$\sigma$满足$\sigma(1-t,t,0) = f(t),\sigma(0,1-t,t) = f^{-1}(t),\sigma(1-t,0,t) = (f * f^{-1})(t) $.然后在$\Delta$任一点定义$\sigma$,令$\sigma$在点$a = a(t) = (1-t,t,0)$和点$b = b(t) = ((2-t)/2,0,t/2)$之间是常数,在点$c = c(t) = (0,1-t,t)$和点$d = d(t) = ((1-t)/2,0,(1+t)/2)$之间是常数.因为$f(1) = f^{-1}(0)$,可以检验如此定义的$\sigma:\Delta^2 \rightarrow X$是连续的,所以$\sigma \in S_2(X)$.并且由于$[f * f^{-1}] = [i_p](p\textmd{ 是路径}f\textmd{的终点})$,因此令$\zeta = \sigma$
-  \[\partial \zeta = \zeta\varepsilon_0 - \zeta\varepsilon_1 + \zeta\varepsilon_2 = f \circ \eta + f^{-1} \circ \eta - i_p \circ \eta = f \circ \eta + f^{-1} \circ \eta\]
-  %\[\partial \zeta = \zeta\varepsilon_0 - \zeta\varepsilon_1 + \zeta\varepsilon_2 = f + f^{-1} - i_p = f + f^{-1}\]
-\end{solution}
-
-\begin{exc}
-  设$X$是拓扑空间,$\alpha,\beta$是两道路且$\alpha(1) = \beta(0), \alpha(0) = \beta(1)$,则$\varphi([a * \beta]) = \textmd{cls}\,(\alpha \circ \eta + \beta \circ \eta)$.
-\end{exc}
-
-\begin{solution}
-  类似Exercise 4.2定义$\sigma : \Delta^2 \rightarrow X$,使得$\sigma(1-t,t,0) = \alpha(t),\sigma(0,1-t,t) = \beta(t),\sigma(1-t,0,t) = (\alpha * \beta)(t) $.并且令$\sigma$在点$a = a(t) = (1-t,t,0)$和点$b = b(t) = ((2-t)/2,0,t/2)$之间是常数,在点$c = c(t) = (0,1-t,t)$和点$d = d(t) = ((1-t)/2,0,(1+t)/2)$之间是常数.因为$\alpha(1) = \beta(0)$,验证可得$\sigma$连续.取边界$\partial \sigma = \sigma \varepsilon_0 - \sigma \varepsilon_1 + \sigma \varepsilon_2 = \alpha \circ \eta - (\alpha * \beta) \circ \eta + \beta \circ \eta$.又因为$\partial \sigma \in B_1(X)$和$\alpha(0) = \beta(1), \beta(0) = \alpha(1)$可得$\alpha * \beta$是$X$上闭道路,即$[\alpha * \beta] \in \pi_1(X,x_0),x_0 = \alpha(0)$.综上
-  \begin{align*}
-    \varphi([\alpha * \beta]) = \varphi([\alpha * \beta]) + \partial \sigma = \textmd{cls}\,((\alpha * \beta) \circ \eta + \alpha \circ \eta - (\alpha * \beta) \circ \eta + \beta \circ \eta) = \textmd{cls}\,(\alpha \circ \eta + \beta \circ \eta) 
-  \end{align*}
+  
 \end{solution}
 
 
-\section{第八次作业}\label{sec:2}
+\begin{pro}
+  Derive the leading order asymptotic behavior of the solution to the ODE
+  \[y^{\prime \prime} + k^2(\varepsilon t)y = 0, 0 < t\]
+  where $\varepsilon \ll 1$ and
+  \[y(0) = a, y^\prime(0) = b.\]
+  Try solving with the method of multiple scales.
+\end{pro}
 
 
-\begin{exc}
-  若
-  \begin{align*}
-        \dots \rightarrow C_{n+1} \rightarrow A_n \overset{h_n}{\rightarrow} B_n \rightarrow C_n   \rightarrow A_{n-1} \overset{h_{n-1}}{\rightarrow} B_{n-1} \rightarrow C_{n-1} \rightarrow \dots
-  \end{align*}
-  是 Abel 群正合序列,且 $\forall n, h_n$ 是同构,则 $C_n$ 是平凡群.
-\end{exc}
-
-\begin{solution}
-  令序列中 $C_{n+1}$到$A_n$的映射为$i_n$, 类似定义 $B_n \rightarrow C_n$ 为 $p_n$,如下所示.
-  \[\dots \overset{p_{n+1}}{\rightarrow} C_{n+1} \overset{i_n}{\rightarrow} A_n \overset{h_n}{\rightarrow} B_n \overset{p_{n}}{\rightarrow} C_n   \overset{i_{n-1}}{\rightarrow} A_{n-1} \overset{h_{n-1}}{\rightarrow} B_{n-1} \overset{p_{n-1}}{\rightarrow} C_{n-1} \overset{i_{n-2}}{\rightarrow} \dots \]
-  因为 $h_n$ 是同构,并且这是正合序列, 所以 $\ker p_n = \textmd{im}\, h_n = B_n$,即 $\textmd{im}\, p_n = 0$, 由正合序列可知 $\ker i_{n-1} = 0$.另一方面,由于$h_{n-1}$是同构得 $\textmd{im}\, i_{n-1} = \ker h_{n-1} = 0$.因此$\dim C_n = \ker i_{n-1} + \textmd{im}\, i_{n-1} = 0$, 即$C_n$是平凡群对任意$n$成立.
-\end{solution}
-
-\begin{exc}
-  若 $U_* \subset T_* \subset S_*$ 是链子复形,那么存在一个链复形的短正合序列
-  \[0 \rightarrow T_*/ U_* \overset{i}{\rightarrow} S_* / U_* \overset{p}{\rightarrow} S_* / T_* \rightarrow 0.\]
-  其中 $i_n\colon t_n + U_n \mapsto t_n + U_n , p_n(s_n + U_n) = s_n + T_n$.
-\end{exc}
-
-\begin{solution}
-  增加定义映射 $f,h$ 如下所示
-  \[0 \overset{f}{\rightarrow} T_*/ U_* \overset{i}{\rightarrow} S_* / U_* \overset{p}{\rightarrow} S_* / T_* \overset{h}{\rightarrow} 0.\]
-  只需验证$f,i,p,h$ 满足正合条件.
-  \begin{itemize}
-  \item $\textmd{im}\, f = \ker i$
-
-    $i(f(0)) = i(0) = 0 \Rightarrow \textmd{im}\, f \subset \ker i$,
-
-    $t_n + U_n \in \ker i, i(t_n + U_n) = t_n + U_n = U_n \Rightarrow t_n \in U_n \Rightarrow t_n + U_n = 0 + U_n = f(0) $, 即 $\ker i \subset \textmd{im}\, f$.
-
-  \item $\textmd{im}\, i = \ker p$
-
-    $t_n \in T_*, p(i(t_n + U_n)) = p(t_n + U_n) = t_n + T_n = 0 + T_n \Rightarrow \textmd{im}\, i \subset \ker p$,
-
-    $s_n + U_n \in \ker p, p(s_n + U_n) = s_n + T_n = T_n \Rightarrow s_n \in T_n \Rightarrow s_n + U_n \in T_n \Rightarrow s_n + U_n = i(s_n + U_n)$, 即 $\ker p \subset \textmd{im}\, i$.
-
-  \item $\textmd{im}\, p = \ker h$
-
-    $s_n \in S_n, h(p(s_n + U_n)) = h(s_n + T_n) = 0 \Rightarrow \textmd{im}\, p \subset \ker h$,
-
-    $s_n + T_n \in \ker h, h(s_n + T_n) = 0, p(s_n + U_n) = s_n + T_n \Rightarrow \ker h \subset \textmd{im}\, p$.
-  \end{itemize}
-\end{solution}
+\section{Bibliofraphy Review}\label{sec:2}
 
 
-\begin{exc}
-  若 $f,g$ 是从链复形 $(S_*^\prime, \partial^\prime)$ 到 $(S_*, \partial)$ 的链映射,且 $f \simeq g$, 而 $p,q$ 是从  $(S_*, \partial)$ 到 $(S_*^{\prime \prime}, \partial^{\prime \prime})$ 的链映射,且 $p \simeq q$.则 $p \circ f \simeq q \circ g$.
-\end{exc}
-
-\begin{solution}
-  %因为链$f \simeq g, p \simeq q$等价于存在$P^1, P^2, \partial_{n+1} P_n^1 + P_{n-1}^1 \partial_n^\prime = f_n - g_n,  \partial_{n+1} P_n^2 + P_{n-1}^2 \partial_n^\prime = p_n - q_n$.
-
-  % 定义 $P_n\colon S_n^\prime \rightarrow S_{n+2}^{\prime \prime}$ 为 $P = P^2_{n+1} \circ P^1_n$.
-  由书上\textbf{Theorem 5.3} $f \simeq g \Leftrightarrow H_n(f) = H_n(g), p \simeq q \Leftrightarrow H_n(p) = H_n(q)$,并且只需证 $H_n(p \circ f) = H_n(q \circ g)$. 因为 $H_n(f) = H_n(g), H_n(p) = H_n(q) \Rightarrow H_n(p) \circ H_n(f) = H_n(q) \circ H_n(g)$. 而又有函子性质和$p,q \in \textmd{Hom}(S_*^\prime, S_*), f,g \in \textmd{Hom}(S_*, S_*^{\prime \prime}),$所以$H_n(p \circ f) = H_n(p) \circ H_n(f) = H_n(q) \circ H_n(g) = H_n(q \circ g)$.结合\textbf{Theorem 5.3} $p \circ f \simeq q \circ g$.
-\end{solution}
 
 
 %   \section{1}
@@ -360,8 +289,3 @@
 % LocalWords:  submatrix nilpotent positivity orthonormal extremum
 % LocalWords:  Jacobian nonsquare semidefinite nonnegative RHS LLS
 % LocalWords:  roundoff closedness
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: t
-%%% End:

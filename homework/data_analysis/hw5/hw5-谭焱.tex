@@ -305,7 +305,7 @@
       \caption{cubic B-spline}\label{fig:2}
     \end{figure}
 
-  \item \textit{make run} will output $E_S(x)$ for the two cardinal B-spline by function \textit{printerror}. You can Adjustment parameters to computer other points' error. And for quadratic B-spline interpolation, it's error in $-3.5, -0.5, 0.5, 3.5$ is close to machine precision, since these is its interpolate points and B-spline meet $\sum\limits_{i = -\infty}^{+\infty} B_i^n = 1, \forall n \in \mathbb{N}$. As for the same reason, cubic B-spline interpolation's error close to $0$ in $-3, 0, 3$. 
+  \item \textit{make run} will output $E_S(x)$ for the two cardinal B-spline by function \textit{printerror}. You can Adjustment parameters to computer other points' error. And for quadratic B-spline interpolation, it's error in $-3.5, -0.5, 0.5, 3.5$ is close to machine precision, since these is its interpolate points. As for the same reason, cubic B-spline interpolation's error close to $0$ in $-3, 0, 3$. Cubic B-spline will be more accurate.
 
   \item \textit{make run} will output interpolations in \textit{output/}. Using \textit{Heartplot.m} can plot. Or \textit{make heart}. Figure like (\ref{fig:3}).
     \begin{figure}
