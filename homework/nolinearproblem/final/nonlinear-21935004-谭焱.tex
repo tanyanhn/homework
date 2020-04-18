@@ -224,7 +224,31 @@
 \end{pro}
 
 \begin{solution}
-  
+  Replace $y$ with Frobenius series $\sum_{n=0}^\infty a_n x^{\alpha + n}$ gives
+  \[\sum\linits_{n = 0}^{\infty} (\alpha + n)(\alpha + n - 1) a_n x^{\alpha + n - 2} + \sum\limits_{n=0}^\infty (\alpha + n) a_n x^{\alpha + n -2} \mp \sum\limits_{n=0}^\infty a_n x^{\alpha+n} - \nu^2 \sum\limits_{n=0}^\infty a_n x^{\alpha + n - 2} = 0.\]
+  Change all $x$ power to $\alpha + n - 2$, then since equal to zero, every coefficients of powers of $x$ equal to zero gives
+  \begin{align*}
+    \begin{cases}
+      x^{\alpha - 2}:\qquad & (\alpha^2 - \nu^2)a_0 = 0, \\
+      x^{\alpha - 1}:\qquad & [(\alpha+1)^2 - \nu^2]a_1 = 0, \\
+      x^{\alpha +n -2}: \qquad & [(\alpha+n)^2 - \nu^2]a_{n} = \mp a_{n-2},  n = 2,3\ldots  
+    \end{cases}
+  \end{align*}
+  $_0 \not= 0 \Rightarrow P(\alpha) = 0 \Rightarrow \alpha = \pm \nu$. Let $\alpha_1 = \left| \nu \right|, \alpha_2 = -\left| \nu \right|$. And it's easy to see that $\alpha = \alpha_1$ will recursively decide a Frobenius solution $y = \sum\limits_{i = 0}^{\infty}a_i x^{i + \alpha - 2}, a_i =
+  \begin{cases}
+    \begin{aligned}
+      0 \qquad  &i \textmd{ is odd} \\
+      \frac{a_0\Gamma(\nu + 1)}{2^{2n} n! \Gamma(\nu + n + 1)}\qquad & i \textmd{ is even}
+    \end{aligned}
+  \end{cases}
+  $, if $\alpha_2 - \alpha_1 = 2\left| \nu \right|$ isn't integer, $\alpha_2$ also will decide another solution.
+
+  Or $2\left| \nu \right|$ is a integer. From the coefficient of powers of $x$ know
+  \[0 * a_N = \mp a_{N-2}\]
+  There are two situation, $N$ is odd or even. As above already know that if $N-2$ is even, $ 0* a_N = a_{N-2} \not= 0$, that can't happen. So at this situation, $\alpha = \alpha_2$ won't decide a solution. If $N$ is odd, $a_N$ can be any value, so there is another linearly independent solution.
+
+  In summary, equation will have two independent solutions as Frobenius series unless $2\nu$ is even, and this situation there is only one Frobenius series solution.
+
 \end{solution}
 
 
@@ -235,7 +259,7 @@
 \end{pro}
 
 \begin{solution}
-  
+  From the coefficient of $y^\prime$ is $\left( x^2 - \frac{1}{4} \right)$. We assume the layer is $x = \frac{1}{2}$ and $y(x) \sim y_0(x) + \varepsilon y_1(x) + \cdots$. Let $\varepsilon = 0$ calculate gives 
 \end{solution}
 
 
@@ -247,6 +271,50 @@
   Try solving with the method of multiple scales.
 \end{pro}
 
+\begin{solution}
+  Choose time scale $t_1 = f(t,\varepsilon) = \int_0^t k(\varepsilon s)ds, t_2 = \varepsilon t$. Therefore,
+  \begin{align*}
+    &\frac{\partial}{\partial t} = f_t \frac{\partial}{\partial t_1} + \varepsilon \frac{\partial}{\partial t_2} \\
+    &\frac{\partial (\frac{\partial}{\partial t})}{\partial t} = \frac{\partial (\frac{\partial t_1}{\partial t} \frac{\partial}{\partial t_1} + \varepsilon \frac{\partial}{\partial t_2})}{\partial t}
+      = f_{tt} \frac{\partial}{\partial t_1} + f_t^2 \frac{\partial^2}{\partial t_1^2} + 2 \varepsilon f_t \frac{\partial^2}{\partial t_1 \partial t_2} + \varepsilon^2 \frac{\partial^2}{\partial t_2^2}
+      = k^2(\varepsilon t) \frac{\partial^2}{\partial t_1^2} + \varepsilon (k^\prime(\varepsilon t) \frac{\partial}{\partial t_1} + 2 k(\varepsilon t) \frac{\partial^2}{\partial t_1 \partial t_2}) + \varepsilon^2 \frac{\partial^2}{\partial t_2^2} .
+  \end{align*}
+  Subtitute this and $y \sim y_0(t_1,t_2) + \varepsilon y_1(t_1,t_2) + \cdots$ into the equation gives
+  \[(k^2(\varepsilon t) \frac{\partial^2}{\partial t_1^2} +
+    \varepsilon (k^\prime(\varepsilon t) \frac{\partial}{\partial t_1} +
+    2 k(\varepsilon t) \frac{\partial^2}{\partial t_1 \partial t_2}) +
+    \varepsilon^2 \frac{\partial^2}{\partial t_2^2})(y_0(t_1,t_2) + \varepsilon y_1(t_1,t_2) + \cdots) + k^2(t_2)(y_0(t_1,t_2) + \varepsilon y_1(t_1,t_2) + \cdots) = 0. \]
+  From coefficients of $\mathcal{e}$ must be zero and initial condition get
+  \begin{align*}
+    \begin{cases}
+      &k^2(\varepsilon t) (\frac{\partial^2}{\partial t_1^2} + 1)y_0(t_1,t_2) = 0 \\
+      &y_0(0, 0) = a, k(0) \frac{\partial}{\partial t_1} y_0(0,0) = b.
+    \end{cases}
+  \end{align*}
+  Solve this get $y_0(t_1,t_2) = a_0(t_2) \cos(t_1) + b_0(t_2) \sin(t_1), a_0(0) = a, b_0(0) = b/k(0)$. Consider next coefficient
+  \begin{align*}
+    \begin{cases}
+      &(k^\prime(\varepsilon t) \frac{\partial}{\partial t_1} +
+      2 k(\varepsilon t) \frac{\partial^2}{\partial t_1 \partial t_2})y_0(t_1,t_2) + k^2(\varepsilon t) (\frac{\partial^2}{\partial t_1^2} + 1)y_1(t_1,t_2) = 0 \\
+      &k^2(\varepsilon t) (\frac{\partial^2}{\partial t_1^2} + 1)y_1(t_1,t_2) = -(k^\prime a_0 + 2 k a_0^\prime  ) (\cos(t_1)) - (k^\prime b_0 + 2 k b_0^\prime) (-\sin(t_1)).  
+    \end{cases}
+  \end{align*}
+  In order to clear secular terms, secular terms' coefficient have to be zero
+  \begin{align*}
+    \begin{cases}
+      k^\prime a_0 + 2 k a_0^\prime  = 0, \\
+      k^\prime b_0 + 2 k b_0^\prime = 0, \\
+      a_0(0) = a, b_0(0) = b/k(0).
+    \end{cases}
+  \end{align*}
+  Solve the equations get
+  \begin{align*}
+    &a_0(t_2) = \frac{a  \sqrt{k(0)}}{\sqrt{k(t_2/\varepsilon)}} \\
+    &b_0(t_2) = \frac{b}{\sqrt{k(0)k(t_2/\varepsilon)}} 
+  \end{align*}
+  In summary,
+  \[y \sim y_0(t_1,t_2) = \frac{a  \sqrt{k(0)}}{\sqrt{k(t)}} \cos(\int_0^t k(\varepsilon s)ds) + \frac{b}{\sqrt{k(0)k(t)}} \sin(\int_0^t k(\varepsilon s)ds).\]
+\end{solution}
 
 \section{Bibliofraphy Review}\label{sec:2}
 
