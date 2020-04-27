@@ -1,0 +1,119 @@
+%%%%%%% --------------------------------------------------------------------------------
+%%
+%%                               Document Template
+%%
+%%%%% --------------------------------------------------------------------------------
+%% Copyright (C) Yusu Pan <xxdsox@gmail.com> 
+%% This is free software: you can redistribute it and/or modify it
+%% under the terms of the GNU General Public License as published by
+%% the Free Software Foundation, either version 3 of the License, or
+%% (at your option) any later version.
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%************************ Document Class Declaration ******************************
+%%
+%\documentclass{style/zjuproposal}% thesis template of ZJU
+%\documentclass{article}
+\documentclass[a4paper,12pt]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+% 
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[numbers,sort&compress]{natbib} 
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+\newcommand{\topcaption}{%
+  \setlength{\abovecaptionskip}{0pt}%
+  \setlength{\belowcaptionskip}{10pt}%
+  \caption}   % 表格上标题修改
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%************************* Command Define and Settings ****************************
+%%
+\usepackage{style/custom}% common settings
+\usepackage{amsmath}
+\usepackage{ctex}
+%\usepackage[a4paper,left=10mm,right=10mm,top=15mm,bottom=15mm]{geometry}
+%\usepackage{abstract}
+\renewcommand\refname{}
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************** Content *****************************************
+%%
+\title{\huge{边界层理论文献综述}}
+\author{谭焱}
+\date{\today}
+
+\renewcommand{\abstract}{}
+\begin{document}
+\maketitle
+%%
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************** Frontmatter *************************************
+%%
+% \pagenumbering{roman}% page numbers with roman style
+%\pagenumbering{gobble}% no page numbers
+%\input{doc/frontpage}
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************** Mainmatter **************************************
+%%
+%\cleardoublepage
+%\pagenumbering{arabic}% restart page numbers with arabic style
+\input{doc/literature_review}%
+%\cleardoublepage
+%\input{doc/proposal}%
+%\cleardoublepage
+%\input{doc/literature_translation}%
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************* Backmatter ***************************************
+%%
+%\pagenumbering{gobble}% no page numbers
+%\cleardoublepage
+%\input{doc/backpage}%
+%%
+\end{document}
+%\begin{document}
+%%%%% --------------------------------------------------------------------------------
+
+% \pagenumbering{roman}% page numbers with roman style
+%\pagenumbering{gobble}% no page numbers
+%\input{doc/frontpage}
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************** Mainmatter **************************************
+%%
+%\clearpage
+%\pagenumbering{arabic}% restart page numbers with arabic style
+%\input{doc/literature_review}%
+%\newpage
+%\input{doc/proposal}%
+%\newpage
+%\input{doc/literature_translation}%
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************* Backmatter ***************************************
+%%
+% \appendix
+%\pagenumbering{gobble}% no page numbers
+%\newpage
+%\input{doc/backpage}%
+%%
+%\end{document}
+%%%%% --------------------------------------------------------------------------------
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -173,11 +173,11 @@
 % \tableofcontents
 % \clearpage
 
-% \pagestyle{fancy}
-% \fancyhead{}
-% \lhead{Qinghai Zhang}
-% \chead{Notes on Algebraic Topology}
-% \rhead{Fall 2018}
+ \pagestyle{fancy}
+ \fancyhead{}
+ \lhead{Yan Tan}
+ \chead{Nonlinear Final}
+ \rhead{April 19 2020}
 
 
 \setcounter{chapter}{0}
@@ -196,7 +196,10 @@
 
 % each chapter is factored into a separate file.
 
-\chapter{21935004 谭焱}
+%\part{Final 21935004 谭焱}
+
+
+\chapter{Final 21935004 谭焱}
 % \begin{lstlisting}
 %   int main(){
 %   double d;
@@ -225,7 +228,7 @@
 
 \begin{solution}
   Replace $y$ with Frobenius series $\sum_{n=0}^\infty a_n x^{\alpha + n}$ gives
-  \[\sum\linits_{n = 0}^{\infty} (\alpha + n)(\alpha + n - 1) a_n x^{\alpha + n - 2} + \sum\limits_{n=0}^\infty (\alpha + n) a_n x^{\alpha + n -2} \mp \sum\limits_{n=0}^\infty a_n x^{\alpha+n} - \nu^2 \sum\limits_{n=0}^\infty a_n x^{\alpha + n - 2} = 0.\]
+  \[\sum\limits_{n = 0}^{\infty} (\alpha + n)(\alpha + n - 1) a_n x^{\alpha + n - 2} + \sum\limits_{n=0}^\infty (\alpha + n) a_n x^{\alpha + n -2} \mp \sum\limits_{n=0}^\infty a_n x^{\alpha+n} - \nu^2 \sum\limits_{n=0}^\infty a_n x^{\alpha + n - 2} = 0.\]
   Change all $x$ power to $\alpha + n - 2$, then since equal to zero, every coefficients of powers of $x$ equal to zero gives
   \begin{align*}
     \begin{cases}
@@ -243,11 +246,13 @@
   \end{cases}
   $, if $\alpha_2 - \alpha_1 = 2\left| \nu \right|$ isn't integer, $\alpha_2$ also will decide another solution.
 
-  Or $2\left| \nu \right|$ is a integer. From the coefficient of powers of $x$ know
+  Or $2\left| \nu \right| = N$ is a integer. From the coefficient of powers of $x$ know
   \[0 * a_N = \mp a_{N-2}\]
-  There are two situation, $N$ is odd or even. As above already know that if $N-2$ is even, $ 0* a_N = a_{N-2} \not= 0$, that can't happen. So at this situation, $\alpha = \alpha_2$ won't decide a solution. If $N$ is odd, $a_N$ can be any value, so there is another linearly independent solution.
+  There are two situation, $N$ is odd or even. As above already know that if $N-2$ is even, $ 0* a_N = a_{N-2} \not= 0$, that can't happen ($a_{N-2}$ will be recursively calculated from $a_0$ or $N = 0$ which is no different, and can't be zero). So at this situation, $\alpha = \alpha_2$ won't decide a solution.
 
-  In summary, equation will have two independent solutions as Frobenius series unless $2\nu$ is even, and this situation there is only one Frobenius series solution.
+  If $N$ is odd, $a_N$ can be any value ($a_{N-2} = 0$ can be recursively define from $a_1$ or $N = 1$ that no influence), so there is another linearly independent solution.
+
+  In summary, equation will have two independent solutions as Frobenius series unless $2\nu$ is even integer, and this situation there is only one Frobenius series solution.
 
 \end{solution}
 
@@ -259,7 +264,106 @@
 \end{pro}
 
 \begin{solution}
-  From the coefficient of $y^\prime$ is $\left( x^2 - \frac{1}{4} \right)$. We assume the layer is $x = \frac{1}{2}$ and $y(x) \sim y_0(x) + \varepsilon y_1(x) + \cdots$. Let $\varepsilon = 0$ calculate gives 
+  % From the coefficient of $y^\prime$ is $\left( x^2 - \frac{1}{4} \right)$. We assume the layer is $x = \frac{1}{2}$ and $y(x) \sim y_0(x) + \varepsilon y_1(x) + \cdots$. Let $\varepsilon = 0$ calculate gives
+  Calculate outer solution gives
+  \begin{align*}
+    y_{outer} = a_0e^{\int_0^x \frac{e^{2t-1}}{t^2 - 1/4}dt}
+  \end{align*}
+  However, this is discontinuous in $x = 1/2$. Therefore, assuming the laryer is inner laryer and in $x = 1/2$. So that
+  \begin{align*}
+    y_{outer} =
+    \begin{cases}
+      2e^{\int_0^x \frac{e^{2s-1}}{s^2 - 1/4}ds}  \qquad 0 < x < \frac{1}{2}  \\
+      3e^{-\int_x^1 \frac{e^{2s-1}}{s^2 - 1/4}ds}  \qquad \frac{1}{2} < x < 1
+    \end{cases}
+  \end{align*}
+  and let $\bar{x} = \frac{x - 1/2}{\varepsilon^\alpha}$, then $\frac{d}{dx} = \varepsilon^{-\alpha} \frac{d}{d\bar{x}}$, substitute this into the ODE gives
+  \begin{align*}
+    \varepsilon^{1-2\alpha}Y^{\prime \prime} + \bar{x}(1 + \varepsilon^\alpha \bar{x}) Y^\prime - e^{2x-1}Y  = 0 \\
+  \end{align*}
+  Let $Y_0 = y_0(\bar{x}) + \varepsilon^\gamma y_1(\bar{x})+ \cdots$. Combining with above equation and take $\alpha = 1/2$ get coefficient of $O(1) = 0$ is
+  \begin{align*}
+    y_0^{\prime \prime} + \bar{x}y_0^\prime - e^{2x-1}y = 0.
+  \end{align*}
+  Solve this ODE get
+  \[y_0(\bar{x}) = A \bar{x} + B[e^{-\bar{x}^2/2} + \bar{x}\int_0^{\bar{x}} e^{-s^2/2} ds].\]
+
+  
+  Then coming to matching, consider $x_{\eta} = \frac{x - 1/2}{\varepsilon^\kappa}, 0<\kappa<\alpha$, and rewrite $y_{outer}$ with $x_{\eta}$
+  \begin{large}
+    \begin{align*}
+      y_{outer} =
+      \begin{cases}
+        2 e^{\int_0^{\varepsilon^\kappa x_{\eta} + 1/2} \frac{x^{2s-1}}{s^2 - 1/4}ds} &\qquad x_\eta < 0 \\
+        3 e^{-\int^1_{\varepsilon^\kappa x_{\eta} + 1/2} \frac{x^{2s-1}}{s^2 - 1/4}ds} &\qquad 0 < x_\eta 
+      \end{cases}
+    \end{align*}
+  \end{large}
+  While $x$ close to $1/2$,
+  \begin{align*}
+    \int_0^x \frac{e^{2s-1}}{s^2 - 1/4}ds &= \int_0^x(\frac{e^{2s-1}}{s - 1/2} - \frac{e^{2s-1}}{s + 1/2})ds\\
+                                          &= e^{\zeta_l} (\ln(1/2 - x) - \ln (1/2) - \ln(1/2 + x) + \ln(1/2) ) \\
+                                          &\sim e^{\zeta_l} \ln(1/2 - x), \zeta_l \in (-1, 0). \\
+                                          &= \sim \ln(1/2 - x) \\
+    \int_x^1 \frac{e^{2s-1}}{s^2 - 1/4}ds &= \int_x^1(\frac{e^{2s-1}}{s - 1/2} - \frac{e^{2s-1}}{s + 1/2})ds\\
+                                          &= e^{\zeta_r} (\ln(1/2) - \ln (x - 1/2) - \ln(3/2) + \ln(x + 1/2) ) \\
+                                          &\sim e^{\zeta_r} (\ln(x - 1/2) + \ln(1/3)), \zeta_r \in (0,1). \\
+                                          &\sim \ln((x - 1/2)/3).                                      
+  \end{align*}
+  The last steps comes from that $C_l = e^{\zeta_l} \rightarrow 1$, and $C_r = e^{\zeta_r} \rightarrow 1$ as $x \rightarrow 1/2$. Then we have
+  \begin{align*}
+    y_{outer} =
+    \begin{cases}
+      2e^{\int_0^x \frac{e^{2s-1}}{s^2 - 1/4}ds}\sim 2e^{\ln(1/2 - x)} = -2\varepsilon^\kappa x_\eta &\qquad x_\eta < 0 \\
+      3e^{-\int_x^1 \frac{e^{2s-1}}{s^2 - 1/4}ds} \sim 3 e^{\ln((x - 1/2)/3)} =  \varepsilon^\kappa x_\eta &\qquad 0 < x_\eta 
+    \end{cases}.
+  \end{align*}
+  In other side,
+  \begin{align*}
+    y_0 \sim
+    \begin{cases}
+      \varepsilon^{\kappa - 1/2}x_\eta (A - B\sqrt{\frac{\pi}{2}})   &\qquad x_\eta < 0  \\
+      \varepsilon^{\kappa - 1/2}x_\eta (A + B\sqrt{\frac{\pi}{2}})  &\qquad 0 < x_\eta
+    \end{cases}.
+  \end{align*}
+  However, $y_0$ and $y_{outer}$ can't matched except $y_0 = 0$. By the same step will get
+  \begin{align*}
+    y_1 \sim
+    \begin{cases}
+      \varepsilon^{\kappa + \gamma - 1/2}x_\eta (A - B\sqrt{\frac{\pi}{2}})   &\qquad x_\eta < 0  \\
+      \varepsilon^{\kappa + \gamma - 1/2}x_\eta (A + B\sqrt{\frac{\pi}{2}})  &\qquad 0 < x_\eta
+    \end{cases}.
+  \end{align*}
+  It's follows that $\gamma = \frac{1}{2}$ and
+  \begin{align*}
+    \begin{cases}
+      A - B\sqrt{\frac{\pi}{2}} = -2 \\
+      A + B\sqrt{\frac{\pi}{2}} = 1
+    \end{cases},
+  \end{align*}
+  from which comes out $A = -1/2$ and $B = 3/\sqrt{2\pi}$.
+
+
+  Finally, coming to composite expansion.
+  \begin{large}
+  \begin{align*}
+    y \sim
+    \begin{cases}
+      2e^{\int_0^x \frac{e^{2s-1}}{s^2 - 1/4}ds} + \varepsilon^\frac{1}{2} (-\frac{1}{2} \bar{x} + \frac{3}{\sqrt{2\pi}}[e^{-\bar{x}^2/2} + \bar{x}\int_0^{\bar{x}} e^{-s^2/2} ds]) + 2 \varepsilon^\kappa x_\eta \qquad & 0 < x < \frac{1}{2}  \\
+      3e^{-\int_x^1 \frac{e^{2s-1}}{s^2 - 1/4}ds} + \varepsilon^\frac{1}{2} (-\frac{1}{2} \bar{x} + \frac{3}{\sqrt{2\pi}}[e^{-\bar{x}^2/2} + \bar{x}\int_0^{\bar{x}} e^{-s^2/2} ds]) - \varepsilon^\kappa x_\eta \qquad & \frac{1}{2} < x < 1
+    \end{cases}.
+  \end{align*}
+  \end{large}
+  
+
+  
+  %\begin{align*}
+  %  \int_0^1 \frac{e^{2x-1}}{x^2 - 1/4}dx &> \int_0^{\frac{1}{2} - k} \frac{e^{2x-1}}{x^2 - 1/4}dx + \int_{\frac{1}{2} +k}^1 \frac{e^{2x-1}}{x^2 - 1/4}dx \qquad k \in (0,\frac{1}{2}) \\
+  %                                        &> \int_0^{\frac{1}{2} - k} \frac{e^{-2k}}{x^2 - 1/4}dx + \int_{\frac{1}{2}+k}^1 \frac{1 + (2x -1)}{x^2 - 1/4}dx  \\
+     %      1
+  %&> e^{-2k} \left.\ln(\frac{1/2 - x}{1/2 + x})\right|_0^{\frac{1}{2} - k} + \left. \ln(x^2 - 1/4) \right|_{\frac{1}{2} + k}^1 \\
+  %                                          &= \frac{\ln k e^{-2k}}{} 
+  %\end{align*}
 \end{solution}
 
 
@@ -272,12 +376,12 @@
 \end{pro}
 
 \begin{solution}
-  Choose time scale $t_1 = f(t,\varepsilon) = \int_0^t k(\varepsilon s)ds, t_2 = \varepsilon t$. Therefore,
+  Choose time scale $t_1 = f(t,\varepsilon) = \int_0^t k(\varepsilon s)ds, t_2 = \varepsilon t \ll t_1 $. Therefore,
   \begin{align*}
-    &\frac{\partial}{\partial t} = f_t \frac{\partial}{\partial t_1} + \varepsilon \frac{\partial}{\partial t_2} \\
-    &\frac{\partial (\frac{\partial}{\partial t})}{\partial t} = \frac{\partial (\frac{\partial t_1}{\partial t} \frac{\partial}{\partial t_1} + \varepsilon \frac{\partial}{\partial t_2})}{\partial t}
-      = f_{tt} \frac{\partial}{\partial t_1} + f_t^2 \frac{\partial^2}{\partial t_1^2} + 2 \varepsilon f_t \frac{\partial^2}{\partial t_1 \partial t_2} + \varepsilon^2 \frac{\partial^2}{\partial t_2^2}
-      = k^2(\varepsilon t) \frac{\partial^2}{\partial t_1^2} + \varepsilon (k^\prime(\varepsilon t) \frac{\partial}{\partial t_1} + 2 k(\varepsilon t) \frac{\partial^2}{\partial t_1 \partial t_2}) + \varepsilon^2 \frac{\partial^2}{\partial t_2^2} .
+    \frac{\partial}{\partial t} &= f_t \frac{\partial}{\partial t_1} + \varepsilon \frac{\partial}{\partial t_2} \\
+    \frac{\partial (\frac{\partial}{\partial t})}{\partial t} = \frac{\partial (\frac{\partial t_1}{\partial t} \frac{\partial}{\partial t_1} + \varepsilon \frac{\partial}{\partial t_2})}{\partial t}
+      &= f_{tt} \frac{\partial}{\partial t_1} + f_t^2 \frac{\partial^2}{\partial t_1^2} + 2 \varepsilon f_t \frac{\partial^2}{\partial t_1 \partial t_2} + \varepsilon^2 \frac{\partial^2}{\partial t_2^2}\\
+      &= k^2(\varepsilon t) \frac{\partial^2}{\partial t_1^2} + \varepsilon (k^\prime(\varepsilon t) \frac{\partial}{\partial t_1} + 2 k(\varepsilon t) \frac{\partial^2}{\partial t_1 \partial t_2}) + \varepsilon^2 \frac{\partial^2}{\partial t_2^2} .
   \end{align*}
   Subtitute this and $y \sim y_0(t_1,t_2) + \varepsilon y_1(t_1,t_2) + \cdots$ into the equation gives
   \[(k^2(\varepsilon t) \frac{\partial^2}{\partial t_1^2} +
@@ -316,7 +420,11 @@
   \[y \sim y_0(t_1,t_2) = \frac{a  \sqrt{k(0)}}{\sqrt{k(t)}} \cos(\int_0^t k(\varepsilon s)ds) + \frac{b}{\sqrt{k(0)k(t)}} \sin(\int_0^t k(\varepsilon s)ds).\]
 \end{solution}
 
-\section{Bibliofraphy Review}\label{sec:2}
+%\section{Bibliofraphy Review}\label{sec:2}
+
+
+%\chapter{匹配渐近展开研究文献综述}\label{chap:1}
+
 
 
 

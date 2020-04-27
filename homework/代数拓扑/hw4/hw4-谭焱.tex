@@ -221,7 +221,7 @@
   %  \begin{equation*}
   %    \begin{aligned}
         $\pi_1(X,x_0)$ & $\overset{\varphi}{\longrightarrow}$ & $H_1(X)$ \\
-        $\downarrow h_*$ &                     &$\downarrow h_\#      $\\
+        $\downarrow h_*$ &                     &$\downarrow h_*      $\\
         $\pi_1(Y,y_0) $ & $\overset{\varphi}{\longrightarrow}$ &$ H_1(Y)$
   %    \end{aligned}
   %  \end{equation*}
@@ -233,7 +233,7 @@
   令$f:I\rightarrow X$是$X$中$x_0$处一条闭道路,$\eta: \Delta^1 \rightarrow I$是同胚$(1-t)e_0 + te_1 \mapsto t$.则
   \begin{align*}
     \varphi \circ h_*([f]) = \varphi([h \circ f]) = \textmd{cls}\,h \circ f \circ \eta \\
-    h_\# \circ \varphi([f]) = h_\#(\textmd{cls}\, f \circ \eta) = \textmd{cls}\, h \circ f \circ \eta
+    h_* \circ \varphi([f]) = h_*(\textmd{cls}\, f \circ \eta) = \textmd{cls}\, h \circ f \circ \eta
   \end{align*}
   所以交换图表成立.
   
@@ -305,7 +305,7 @@
 
   \item $\textmd{im}\, p = \ker h$
 
-    $s_n \in S_n, h(p(s_n + U_n)) = h(s_n + T_n) = 0 \Rightarrow \textmd{im}\, p \subset \ker h$,
+    $s_n \in S_*, h(p(s_n + U_n)) = h(s_n + T_n) = 0 \Rightarrow \textmd{im}\, p \subset \ker h$,
 
     $s_n + T_n \in \ker h, h(s_n + T_n) = 0, p(s_n + U_n) = s_n + T_n \Rightarrow \ker h \subset \textmd{im}\, p$.
   \end{itemize}
