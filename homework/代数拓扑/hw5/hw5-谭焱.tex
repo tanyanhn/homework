@@ -223,13 +223,13 @@
 	\begin{enumerate}
 		\item $ \text{im}\, d_n \subset \text{ker}\, i_{n-1} $
 		
-		对任意$ s^{\prime\prime}_n \in S_n^{\prime\prime} $,由短正合序列得$p$是满射知可取$s_n \in S_n$使得$s_n = p^{-1}_{n} s^{\prime \prime}_n$.因此
+		对任意$ s^{\prime\prime}_n \in S_n^{\prime\prime} $,由短正合序列得$p_n$是满射知可取$s_n \in S_n$使得$s_n = p^{-1}_{n} s^{\prime \prime}_n$.因此
 		
 		\[ i_{n-1} \circ d_n(s_n^{\prime \prime} + B^{\prime \prime}_n) = i_{n-1}(i^{-1}_{n-1}\partial_n p^{-1}_n s^{\prime \prime}_n + B^\prime_{n-1}) = \partial_n s_n + B_{n-1} = B_{n-1} = 0\].
 		
 		\item  $ \text{im}\, d_n \supset \text{ker}\, i_{n-1} $
 		
-		对任意$ s^\prime_{n-1} \in \text{ker}\, i_{n-1} $,那么有$ i_{n-1}(s^\prime_{n-1} + B^\prime_{n-1}) = i_{n-1}s^\prime_{n-1} + B_{n-1} = B_{n-1} $等价于存在$s_n \in S_n$ 使得 $\partial_n s_n = i_{n-1} s^\prime_{n-1}$,那么有
+		对任意$ s^\prime_{n-1} \in \text{ker}\, i_{n-1} $,那么有$ i_{n-1}(s^\prime_{n-1} + B^\prime_{n-1}) = i_{n-1}(s^\prime_{n-1}) + B_{n-1} = B_{n-1} $等价于存在$s_n \in S_n$ 使得 $\partial_n s_n = i_{n-1} (s^\prime_{n-1})$,那么有
 		
 		\[d_n(p_n s_n + B^{\prime\prime}_{n}) = i^{-1}_{n-1} \partial_n p^{-1}_{n} (p_n s_n) + B^\prime_{n-1} = s^\prime_{n-1}\].
 	\end{enumerate}
@@ -268,12 +268,94 @@
 \end{exc}
 
 \begin{solution}
-	因为$ d_n $是连接同态,所以$ i_*\colon S_*(A) \rightarrow S_*(X) ,p_*\colon S_*(X) \rightarrow S_*(X)/S_*(A) $分别是单射和满射并且$ \forall a \in A, i(a) = a, \forall x \in X, p(x) = x + A $.因此
+	因为$ d_n $是连接同态,所以$ i_*\colon S_*(A) \rightarrow S_*(X) ,p_*\colon S_*(X) \rightarrow S_*(X)/S_*(A) $分别是单射和满射并且$ \forall a \in A, i(a) = a, \forall x \in X, p(x) = x + A $.因此设$\operatorname{cls} \delta^{\prime \prime}_n = \delta_n + S_n(A), \delta_n \in S_n(X)$,
 	\begin{align*}
-	d_n(\text{cls}\, \delta^{\prime \prime}_n) = d_n(\delta^{\prime \prime}_n + S_n(A) + B^{\prime \prime}_{n}) = i_{n-1}^{-1} \partial_n p^{-1}_n (\delta^{\prime \prime}_n + S_n(A) + B_{n}^{\prime \prime}) \\
-	= i_{n-1}^{-1} \partial_n (\delta_n + S_n(A) + B_n) = i_{n-1}^{-1}(\partial_n\delta_{n} + B_{n-1}(A)) = \text{cls}\, \partial_n \delta_n .
+	d_n(\text{cls}\, \delta^{\prime \prime}_n) = d_n(\delta_n + S_n(A) + B_{n}(X,A)) = i_{n-1}^{-1} \partial_n p^{-1}_n (\delta_n + S_n(A) + B_{n}(X,A)) \\
+	= i_{n-1}^{-1} \partial_n (\delta_n + S_n(A) + B_n(X)) = i_{n-1}^{-1}(\partial_n\delta_{n} + B_{n-1}(X)) = \partial_n \delta_n + B_{n-1}(A) .
 	\end{align*}
+  \end{solution}
+
+
+  \section{第十次作业}\label{sec:2}
+
+  \begin{exc}
+    已知 $H_p(S^n) =
+    \begin{aligned}
+      \begin{cases}
+        \mathbb{Z}  \qquad p = n \textmd{ 或 } 0 \\
+        0 \qquad \textmd{其他}
+      \end{cases}
+    \end{aligned}
+$ 求 $H_p(D^{n+1}, S^n), D^{n+1} = \{(x_0, x_1,\ldots, x_n) \left. \right| x_0^2 + x_1^2 + \cdots + x_n^2 \leq 1\}$.
+\end{exc}
+
+\begin{solution}
+  % 因为$D^{n+1}$是道路连通的,$S^n$是$D^{n+1}$的非空子空间,所以由定理5.12$H_0(D^{n+1}, S^n) = 0$.
+  我们已知$H_p(D^n) =
+  \begin{aligned}
+    \begin{cases}
+      \mathbb{Z}  \qquad p = 0 \\
+      0 \qquad \textmd{其他}
+    \end{cases}
+  \end{aligned}$,又因为定理5.8得
+\[\cdots \rightarrow H_k(S^{n}) \overset{i_*}{\rightarrow} H_k(D^{n+1}) \overset{p_*}{\rightarrow} H_k(D^{n+1}, S^{n}) \overset{d}{\rightarrow} H_{k-1}(S^n) \overset{i_*}{\rightarrow} \cdots\]
+是正合序列.%不妨令$i_*$由映射$i_n \colon S^n \hookrightarrow D^{n+1}, x \rightarrow x, \forall x \in S^n$诱导,$p_*$由恒等映射$p_n = id_{D^{n+1}}$诱导.
+因此对于$k > 0$时,$H_k(D^{n+1}) = 0$,结合正合序列性质得$ H_k(D^{n+1}, S^{n}) \cong H_{k-1}(S^n)$,若$k=0$,有正合序列
+\[\cdots \rightarrow H_0(S^{n}) \overset{i_*}{\rightarrow} H_0(D^{n+1}) \overset{p_*}{\rightarrow} H_0(D^{n+1}, S^{n}) \overset{d}{\rightarrow} 0.\]
+所以$ H_0(D^{n+1}, S^{n}) \cong H_{0}(D^{n+1})$.
+
+综上,$H_p(D^{n+1}, S^n) =
+\begin{aligned}
+  \begin{cases}
+    \mathbb{Z}  \qquad p = 0,1 \textmd{ 或 } n+1 \\
+    0 \qquad \textmd{其他}
+  \end{cases}
+\end{aligned}$
 \end{solution}
+
+\begin{exc}
+  \[ 0 \rightarrow A \overset{i}{\rightarrow} B \overset{j}{\rightarrow} C \rightarrow 0\]
+  是Abel群的短正合序列若$\exists$同态$\pi$是$j\circ \pi = Id_C$,则$B \cong A \oplus C$.
+  举例说明 $0 \rightarrow A \overset{i}{\rightarrow} B \overset{j}{\rightarrow} C \rightarrow 0$短正合序列,不一定有$B \cong A \oplus C$.
+\end{exc}
+
+\begin{solution}
+  %首先由短正合定义知$i$是单射,$j$是满射.因为$A,B,C$是Abel群,不妨设$A = \langle G_A,*\rangle,
+  %B = \langle G_B,* \rangle,
+  %C = \langle G_C,* \rangle, G_A = \{\alpha_i\},
+  %G_B = \{\beta_i\},
+  %G_C = \{\gamma_i\}$.设$G_B = \{i(\alpha_i)\}$,因为$i$是单射所以$i$是$A$ 到$ \langle G_B, *\rangle = \operatorname{im} i $的同构映射.又因为存在同态$\pi$使得$j \circ \pi = Id_C$,取$\beta_{k_j} = \pi(\gamma_j)$,设$G^\prime_B = \{\beta_{k_j}\}$,则显然$\langle G^\prime,* \rangle$满足$\forall \gamma_j \in G_C, j(\beta_{k_j}) = \gamma_j$,容易定义$j^\prime\colon \langle G^\prime,* \rangle \rightarrow C, \forall \beta_{k_j} \in G^\prime_B, j^\prime(\beta_{k_j}) = \gamma_j $是同构映射,即$\langle G^\prime_B,* \rangle \cong \langle G_C,* \rangle$.又因为短正合序列的性质, $B \cong \operatorname{im} i \oplus \operatorname{im} j^\prime \cong A \oplus C$.
+  %$\forall \alpha_i \in G_A,i(\alpha_i) \notin \langle G^\prime_B,* \rangle, \forall \beta_i \in G_B - G^\prime_B, \exists \alpha \in G_A,s.t. i(\alpha) = \beta_i $,并且$i$满足是单射,所以$i$是$\langle G_A,* \rangle$到 $\langle G_B - G^\prime_B,* \rangle$的同构.因此$A \oplus C \cong \langle G_B - G^\prime_B, * \rangle \oplus \langle G^\prime_B,* \rangle \cong \langle G_B,* \rangle \cong B$.
+  由短正合序列定义知,$i$是单射,$j$是满射.可以定义映射$f\colon A \oplus C \rightarrow B$为$\forall a\in A, c \in C, f(a,c) = i(a) + \pi(c)$.
+
+  $\forall b \in B, j(b) \in C$,所以$j( f(0,j(b)) - b) = j \circ i(0) + j \circ \pi(j(b)) - j(b) = 0 + j(b) - j(b) = 0$, 所以由短正合序列定义$(f(0,j(b)) - b) \in \ker j = \operatorname{im} i$.即$\exists a \in A, s.t. i(a) = f(0,j(b)) - b \Longrightarrow f(a,f(b)) = i(a) + \pi(j(b)) = b$.所以$f$是满射.
+  
+  % 若$\exists a\not=a^\prime or c\not=c^\prime,s.t. f(a,c) = f(a^\prime,c^\prime)$.可得$j(f(a,c) - f(a^\prime,c^\prime)) = j(c) - j(c^\prime) = 0$
+  已知$i$是单射,且$\pi\circ j = Id_C$得$\pi$也是单射,所以$f(a,c) = i(a) + \pi(c)$是单射.
+
+  综上,$f$是双射,即$B \cong A \oplus C$
+
+  反例令$A = \mathbb{Z}_z,B = \mathbb{Z}_4, C = \mathbb{Z}_2$,$i(0) = 0, i(1) = 2,j(0) = 0,j(1)= 1,j(2) = 0,j(3) = 1$,容易验证满足短正合序列性质,但是$\mathbb{Z}_4 \not\cong \mathbb{Z}_2 \oplus \mathbb{Z}_2$.
+\end{solution}
+
+\begin{exc}
+  设 $S^n$ 为$n$维球面.证明: $S^1 \times S^3, S^2 \times  S^2, S^4$ 互不同胚.
+\end{exc}
+
+\begin{solution}
+  已知$n\not=0$时, $H_p(S^n) =
+  \begin{aligned}
+    \begin{cases}
+      \mathbb{Z}  \qquad p = n \textmd{ 或 } 0 \\
+      0 \qquad \textmd{其他}
+    \end{cases}
+  \end{aligned}
+  $,因此$H_1(S^1 \times S^3) = H_1(S^1) \oplus H_1(S^3) = \mathbb{Z}$,然而$H_1(S^2 \times S^2) = H_1(S^2) \oplus H_1(S^2) = 0, H_1(S^4) = 0$.并且$H_4(S^4) = \mathbb{Z} \not= H_4(S^2 \times S^2) = H_4(S^2) \oplus H_4(S^2) = 0$.综上 $S^1 \times S^3, S^2 \times S^2, S^4$ 互不同胚.
+  %取$X_1 = S^3 \times S^1 - \{a\}, X_2 = S^3 \times S^1 - \{b\}$,则$H_2(X_1) \oplus H_2(X_2) \cong  0 ,H_1(X_1) \oplus H_1(X_2) \cong 0, H_1(X_1 \cap X_2) \cong H_1(S^3 \times S^0) \cong 0, H_2(X_1 \cap X_2) \cong 0 $.由$H$是Able群和上题结论知$H_2(S^3 \times S^1) \cong H_2(X_1) \oplus H_2(X_2) \oplus H_1(X_1 \cap X_2) \cong 0 $. 类似可得$H_4(S^3 \times S^1) \cong 0$.所以$S^3 \times S^1,S^4$互不同胚.
+
+  %取$X_1 = S^2 \times S^2 - \{a\} = S^2, X_2  = S^2 \times S^2 - \{b\} = S^2, X_1 \cap X_2 \cong S^2 \times S^1$,因为$H_2(S^2 \times S^0)$
+\end{solution}
+
 
 %\section{1}
 %\label{sec:logic}
