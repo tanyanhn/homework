@@ -180,7 +180,7 @@
 % \rhead{Fall 2018}
 
 
-\setcounter{chapter}{10}
+\setcounter{chapter}{6}
 \pagenumbering{arabic}
 % \setcounter{page}{0}
 
@@ -196,11 +196,7 @@
 
 % each chapter is factored into a separate file.
 
-\chapter{Homework 谭焱}
-
-\section{第十一次作业}
-
-
+\chapter{Homework 21935004 谭焱}
 % \begin{lstlisting}
 %   int main(){
 %   double d;
@@ -214,116 +210,114 @@
 
 % \begin{multicols}{2}
 %   \setlength{\columnseprule}{0.2pt}
-%\section{第十一次作业}
-
 \begin{pro}
-  $f \colon \mathring{D}^n \rightarrow \mathring{D}^n $ 连续映射,举例说明$f$ 不一定有不动点.
-
-  $\mathring{D}^n = \{ (x_1,x_2, \ldots , x_n) \left. \right| \ x_1^n + x_2^2 + \cdots + x_n^2 < 1\}$.
+  If the bisection method is used in single precision FPNs of IEEE 754 starting with the interval $[128,129]$, can we compute the root with absolute accuracy $ < 10^{-6}$? Why?
 \end{pro}
 
 \begin{solution}
-  定义$f \colon \mathring{D}^n \rightarrow \mathring{D}^n,\forall (x_1, x_2,\ldots, x_n) \in \mathring{D}^n $,
+  We can't do that. Since the unit roundoff $\epsilon_u$ of single precision FPNs of IEEE 754 is $\frac{1}{2} \times 2^{-23} > 1 \times 10^{-8} > \frac{10^{-6}}{128}$.
+\end{solution}
+
+\begin{pro}
+  What are the condition numbers of the following functions? Where are they large?
+  \begin{itemize}
+  \item $( x - 1)^\alpha$,
+  \item $\ln x$,
+  \item $ e^x$,
+  \item $\arccos x$.
+    
+  \end{itemize}
+\end{pro}
+
+\begin{solution}
+  \begin{itemize}
+  \item $C_{( x - 1)^\alpha}(x) = \left| \frac{x \times \alpha(x-1)^{\alpha-1}}{(x-1)^\alpha} \right| = \left| \frac{\alpha x}{x-1} \right|$. And while $x \rightarrow 1, C_{( x - 1)^\alpha}(x) \rightarrow +\infty$.
+
+  \item $C_{\ln x}(x) = \left|  \frac{1}{\ln x} \right|$. And while $x \rightarrow 1, C_{\ln x}(x) \rightarrow +\infty$.
+
+  \item $C_{e^x}(x) = \left| \frac{x e^x}{e^x} \right| = \left| x \right|$. And while $x \rightarrow \pm \infty, C_{e^x}(x) \rightarrow +\infty$.
+
+    \item $C_{\arccos x}(x) = \left| \frac{x}{\sqrt{1 -x^2} \arccos x} \right|$. And while $x \rightarrow \pm 1, C_{\arccos x}(x) \rightarrow +\infty$.
+  \end{itemize}
+\end{solution}
+
+\begin{pro}
+  The last Exercise in Section 1.3.5 in the notes.
+\end{pro}
+
+\begin{solution}
+  Assume that $\sin x, \cos x$ are computed with relative error within machine roundoff. Since $\cos x > 0, x \in (0, \pi/2)$ Then
   \begin{align*}
-    f(x_1,x_2,\ldots, x_n) = (x_1/2,x_2/2,\ldots, x_{n-1}/2, (x_n + 1)/2) 
+    f_A &= \operatorname{fl\left[ \frac{\operatorname{fl}(\sin x)}{\operatorname{fl}( 1 + \operatorname{fl}(\cos x))} \right]} \\
+        &= \frac{\sin x(1 + \delta_1)}{(1 + \cos x(1 + \delta_2))( 1 + \delta_3)}( 1 + \delta_4) \\
+        &= f(x) \frac{(1 + \cos x)}{ 1 +  \cos x( 1 + \delta_2)} \frac{(1 + \delta_1)(1 + \delta_4)}{(1 + \delta_2)( 1+ \delta_3)} \\
+    &\approx f(x)(1 + \delta_1 - \delta_3 + \delta_4 + \frac{\cos x}{1 + \cos x(1 + \delta_2)}\delta_2)\\
+    & \leq f(x)( 1 + (3 + \frac{\cos x}{1 + \cos x(1 + \delta)}) \epsilon_u) \\
+      %  &= f(x)( 1 + 4\delta(x)) \\
+    \operatorname{cond}_f(x) &= \left| \frac{x}{\sin x} \right| = \frac{x}{\sin x} \\
+    \operatorname{cond}_A(x) &\leq \frac{(3 + \frac{\cos x}{1 + \cos x}) \sin x}{x}
   \end{align*}
-  已知$\sum\limits_{i=1}^n x_i^2 <1,  x_n < 1$.所以$(x_1/2)^2 + (x_2/2)^2 + \cdots (x_{n-1}/2)^2 + ((x_n + 1)/2)^2 = \frac{1}{4}(\sum\limits_{i=1}^n x_i^2 +2 x_n + 1) < \frac{1}{4}(1 + 2 + 1) = 1$,连续性由定义易得. 所以$f$ 是将$\mathring{D}^n$映射到$\mathring{D}^n$上.并且若有不动点$x, f(x) = x$等价于
+\end{solution}
+
+\begin{pro}
+  Consider the function $f(x) = 1 - e^{-x}$ for $x \in [0,1]$.
+  \begin{itemize}
+  \item Show that $\operatorname{cond}_f(x) \leq 1$ for $x \in [0,1]$.
+
+  \item Let $A$ be the algorithm that evaluates $f(x)$ for the machine number $x \in \mathbb{F}$. Assume that the exponential function is computed with relative error within machine roundoff. Estimate $\operatorname{cond}_A(x)$ for $x \in [0,1]$.
+
+    \item Use \textbf{C++} to plot $\operatorname{cond}_f(x)$ and $\operatorname{cond}_A(x)$ as a function of $x$ on $[0,1]$. Discuss your results.
+  \end{itemize}
+\end{pro}
+
+\begin{solution}
+  \begin{itemize}
+  \item Calculate $\operatorname{cond}_f(x) = \frac{x e^{-x}}{1 - e^{-x}} \leq x e^{-x} \leq x \leq 1,x \in[0,1]$
+    \item \begin{align*}
+      f_A &= \operatorname{fl}(1 - \operatorname{fl}(e^{-x})) \\
+            &= (1 - e^{-x}( 1 + \delta_1))( 1 + \delta_2) \\
+            &\approx f(x)(1 + \frac{e^{-x}}{1 - e^{-x}}\delta_1 + \delta_2)\\
+          &\leq f(x)(1 + (1 +\frac{e^{-x}}{1 - e^{-x}})\epsilon_u) \\
+      \operatorname{cond}_A(x) &\leq \frac{1}{x e^{-x}}.
+    \end{align*}
+
+  \item $\operatorname{cond}_f(x)$ from $1$ decrease as $x$ increase, and $\operatorname{cond}_A(x)$ decrease from $+\infty$, Since as $x \rightarrow 0, f(x) = 1 - e^{-x} \rightarrow 0$, this will conduct catastrophic cancellation. 
+    \begin{figure}
+      \centering
+      \includegraphics*[scale = 1]{code/cond.png}
+      \caption{condition function}
+    \end{figure}
+  \end{itemize}
+\end{solution}
+
+\begin{pro}
+  The math problem of root finding for a polynomial
+  \[ q(x) = \sum\limits_{i = 0}^n a_i x^i, \qquad a_n = 1, a_0 \not= 0, a_i \in \mathbb{R}\]
+  can be considered as a vector function $f \colon \mathbb{R}^n \rightarrow \mathbb{C} \colon$
+  \[ r = f(a_0, a_1, \ldots, a_{n-1}).\]
+  Derive the componentwise condition number of $f$ based on the 1-norm. For the Wilkinson example, compute your condition number, and compare your result with in the Wilkinson Example. What does the comparison tell you?
+\end{pro}
+
+\begin{solution}
+  By definition of the componentwise condition number
   \begin{align*}
-    \begin{cases}
-      x_i = x_i/2 \qquad i=1,2,\ldots, n-1 \\
-      x_n = (x_n + 1)/2
-    \end{cases}
+    a_{ij}(x) = \left| \frac{a_j\frac{\partial f}{\partial a_j}}{f(x)} \right| = \left| \frac{a_j}{r}\frac{dr}{da_j} \right|.
   \end{align*}
-  解得 $x = (0,0,\ldots, 0, 1) \not\in \mathring{D}^n$.即$f$没有不动点.即连续函数不一定有不动点.
-\end{solution}
-
-
-\begin{pro}
-  设$X$是拓扑空间,将$X \times I$空间中$X \times \{0\}$等置为一点$S$,又将$X \times \{1\}$等置为一点$N$,所得商空间记$SX$,证明: $H_n(SX) \cong \tilde{H}_{n-1}(X)$
-\end{pro}
-
-
-\begin{solution}
-  设$X_1 = SX - \{S\}, X_2 = SX - \{N\}$,则$SX = \mathring{X}_1 \cup \mathring{X}_2, X \times (0,1) = X_1 \cap X_2$.且$X_1,X_2$等价于$X$上的圆锥体内部点不妨都写为$\mathring{CX} = X \times (0,1) \cup \{NS\}$
-
-  定义$F \colon \mathring{CX} \times I \rightarrow  \mathring{CX}$为$F([x,t],s) = [x,(1 -s)t +s]$,连续性显然.可以验证$F([x,t],0) = [x,t] = Id_{\mathring{CX}}, F([x,t],1) = [x,1] = NS$.所以$1_{\mathring{CX}}$是零伦的,由定义 $\mathring{CX}$是可缩的.我们有$H_n(X_1) = H_n(X_2) = 0$.
-
-  定义$f \colon X \rightarrow X \times (0,1), g \colon X \times (0,1) \rightarrow X$为 $f(x) = [x,1/2], g([x,t]) = x$.则有$ (g \circ f)(x) = x, (f \circ g)(x,t) = (x,1/2)$.显然$(g \circ f) \simeq 1_X$,定义 $G \colon (X \times (0,1)) \times I \rightarrow (X \times (0,1))$为 $G([x,t],i) = [x,(t - 1/2)i + 1/2]$,连续性显然.可以验证$G([x,t],0) = [x,1/2] = (f \circ g)(x,t), G([x,t],1) = [x,t] = 1_{X \times (0,1)}$,即$f \circ g \simeq 1_{X_1 \cap X_2}$.所以$X_1 \cap X_2,X$有相同同伦类型,所以$\tilde{H}_n(X_1 \cap X_2) = \tilde{H}_n(X)$
-
-  通过 (Mayer-Vietoris for Reduced Homology) 和$X_1,X_2,SX, X_1 \cap X_2$之间的正合序列
-  \[ \cdots \rightarrow \tilde{H}_n(X_1 \cap X_2) \rightarrow \tilde{H}_n(X_1) \oplus \tilde{H}_n(X_2)\rightarrow \tilde{H}_n (SX) \rightarrow \tilde{H}_{n-1}(X_1 \cap X_2) \rightarrow \cdots.\]
-  和$\tilde{H}_n(X_1) = \tilde{H}_n(X_2) = 0$.可知$H_n(SX) = \tilde{H}_n(SX) \cong \tilde{H}_{n-1}(X_1 \cap X_2) \cong \tilde{H}_{n-1}(X) (n>0)$.
-\end{solution}
-
-\section{第十二次作业}
-
-\begin{pro}
-  定义$f \colon S^2 \rightarrow S^2$ 连续映射为
-  \[(x_0,x_1,x_2) \mapsto (x_0 \cos 5 + x_1 \sin 5, x_0 \sin 5 - x_1 \cos 5, x_3)\]
-  求 $d(f)$.
-\end{pro}
-
-\begin{solution}
-  取点$x_0$为$(\frac{1}{\sqrt{2(1 - \cos 5)}} \sin 5,\frac{1}{\sqrt{2(1 - \cos 5)}} (1 - \cos 5), 0)$, 可以验证$x_0 \in S^2$, 将$x_0$代入$f$计算得
+  Since $q(r) = 0$, So $dr,da_j$ fill the $q_x dr + r^j da_j = 0$. So
   \begin{align*}
-    f(x_0) &= (\frac{1}{\sqrt{2(1 - \cos 5)}}( \sin 5 \times \cos 5 + (1 - \cos 5) \times \sin 5),
-          \frac{1}{\sqrt{2(1 - \cos 5)}}( \sin 5 \times \sin 5 - (1 - \cos 5) \times \cos 5),
-          0) \\
-        &= (\frac{1}{\sqrt{2(1 - \cos 5)}} \sin 5,\frac{1}{\sqrt{2(1 - \cos 5)}} (1 - \cos 5), 0) \\
-   & = x_0.
+    \operatorname{cond}_f(x) &= \lVert A(x) \rVert_1 \\
+    &=\max \{\left| \frac{a_j r^{j-1}}{q_x(r)} \right|\} .
   \end{align*}
-  即$x_0$是$f$的不动点.所以$d(f) \not= -1$
-  又因为
-  \[f(x) = x \left[ 
-      \begin{array}{lll}
-        \cos 5 &  \sin 5 & 0 \\
-        \sin 5 &  -\cos 5 & 0 \\
-        0      &   0     & 1
-      \end{array}
-    \right] =: x A \]
-  中$A$是可逆矩阵且因为$\det A = -1 \Longrightarrow \forall x \in S^2, x A^{-1} \in S^2$,所以$f$是双射,即$f$是同伦等价的.即$d(f) = \pm 1$,由上有$d(f) \not= -1$所以$d(f) = 1$.
-\end{solution}
-
-\begin{pro}
-  作$S^{2n+1}$ 上一个非零切向量场.
-\end{pro}
-
-\begin{solution}
-  定义$f\colon S^{2n+1} \rightarrow \mathbb{R}^{2n+2}$,
+  For Wilkinson example, replace $q(x)$ with $f(x) = \prod_{k =1}^n(x - k)$ gives
   \begin{align*}
-    f(x_0,x_2,\ldots, x_{2n+1}) \mapsto (x_1, -x_0,x_3,-x_2,\ldots, x_{2n+1}, - x_{2n}).
+    \operatorname{cond}_f(x) &= \lVert A(x) \rVert_1 \\
+                             &= \max \{\left| \frac{a_j n^{j-1}}{(n-1)!} \right|\} \\
+                             & \geq (1 + 2 + \cdots +n) n^{n-2}/ (n-1)! \qquad \textmd{take } j = n-1 \\
+    &= \frac{n+1}{2n} \frac{n^n}{(n-1)!}\\
+    &\rightarrow +\infty.
   \end{align*}
-  显然$f$是非零的,由$x \in S^{2n +1}$.并且满足
-  \begin{align*}
-    \left< x, f(x) \right> &= \sum_{i = 1}^{n+1} (x_{2i-1} x_{2i} + x_{2i} (-x_{2i-1})) \\
-    & = 0.
-  \end{align*}
-  所以$f$是一个非零切向量场.
+  The condition number is the same magnitude with Wilkinson Example.
 \end{solution}
-
-\begin{pro}
-  若 $g \colon S^1 \rightarrow S^1$ 连续且保对经, 即$ a^1 \circ g = g \circ a^1$, 证明 $d(g)$奇.
-\end{pro}
-
-\begin{solution}
-  若$g$没有不动点,则$g$与$a^1$同伦,所以$d(g) = 1$是奇数.
-
-  若$g$有不动点,不妨设不动点为$(1,0)$.因此$g((-1,0)) = (g \circ a^1)((1,0)) = (a^1 \circ g)((1,0)) = -g((1,0)) = (-1,0)$,即$(-1,0)$也是$g$的不动点.定义路径$\sigma,\tau\colon I \rightarrow S^2$为
-  \[\sigma(t) = (1 - 2t, 4t - 4t^2) \qquad
-  \tau(t) = (1 - 2t, 4t^2 - 4t).\]
-$(g \circ \sigma)((1,0)) = (1,0), (g \circ \sigma)((-1,0)) = (-1,0)$所以$g \circ \sigma$与$k(\sigma - \tau) +\sigma $或$k(\sigma - \tau) + \tau, k \in \mathbb{Z}$定端同伦,不妨设与$k(\sigma - \tau) + \sigma$定端同伦,而且保对经可知$\forall x \in \sigma, -x \in \tau, g(-x) = -g(x)$,所以路径$g \circ \tau = g \circ a^1 \circ \sigma = a^1 \circ g \circ \sigma $与$a^1 \circ (k (\sigma - \tau) + \sigma) =  k(\tau - \sigma) + \tau$定端同伦,合并起来得路径$(g \circ (\sigma - \tau))$与$(2k +1)(\sigma -\tau)$定端同伦.另一方面,因为$\operatorname{cls} (\sigma - \tau)$是 $H_1(S^1)$的生成元,结合$d(g)$的定义可知$g_*(\operatorname{cls} (\sigma - \tau)) = d(g)(\operatorname{cls}\sigma - \tau)$.所以$d(g) = \deg g = 2k + 1$是奇数.
-\end{solution}
-
-\begin{pro}
-  若 $g \colon S^2 \rightarrow S^2$ 连续, 且 $\forall x \in S^2, g(x) \not= g(-x)$,则$g$ 满映射.
-\end{pro}
-
-\begin{solution}
-  若$g$不是满映射.不妨设$\exists x_0 \in S^2, s.t. \not\!\exists x \in S^2, g(x) = x_0$.设$g$的值域为$G$, 则从点$x_0$出发作射线可以定义一个单射$f\colon G \rightarrow \mathbb{R}^2 $.所以$f \circ g \colon S^2 \rightarrow \mathbb{R}^2$,并且因为$f$是单射和$\forall x \in S^2, g(x) \not= g(-x)$可知$\forall x \in S^2, (f \circ g)(x) \not= (f \circ g)(-x)$.因此可以定义一个函数$h\colon S^2 \rightarrow S^1$为
-  \[g(x) = ((f \circ g)(x) - (f \circ g)(-x)) / \lVert (f \circ g)(x) - (f \circ g)(-x) \rVert.\]
-  显然$h$是一个保对经映射,这与当$m > 1$时不存在保对经映射$h \colon S^m \rightarrow S^1$矛盾.
-\end{solution}
-
 
 %   \section{1}
 %   \label{sec:logic}

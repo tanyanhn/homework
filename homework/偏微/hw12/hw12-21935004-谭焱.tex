@@ -210,6 +210,20 @@
 
 % \begin{multicols}{2}
 %   \setlength{\columnseprule}{0.2pt}
+
+%\begin{pro}
+%  Justify in the proof of Lemma 2 in \S 4.5.3 the transformation of the integral of $ e^{-z^2}$ over the line $\Gamma$ to the integral over the real axis.
+%\end{pro}
+
+%\begin{solution}
+%  Let $\Gamma$ intersect with real axis $\Xi$ in the point $A$. Since $e^{-z^2}$ is holomorphic function on complex plane, and take $\Gamma_1,\Gamma_2$ as two part of $\Gamma$ divide by point $A$, so
+%  \begin{align*}
+%    \int_\Gamma e^{-z^2}dz &= \int_{\Gamma_1} e^{-z^2}dz + \int_{\Gamma_1} e^{-z^2}dz
+%  \end{align*}
+  
+%\end{solution}
+
+
 \begin{pro}
   Utilize Lemma 2 in \S4.5.3 to discuss the sense in which $u$ defined by formula $(20)$ in \S4.3.1 converges to the initial data $g$ as $t \rightarrow 0^+$.
 \end{pro}
@@ -219,7 +233,7 @@
   \[\frac{1}{(2\pi \varepsilon)^{n/2}} \int_{\mathbb{R}^n} e^{\frac{i}{2 \varepsilon} y \cdot Ay} a(y) dy = \frac{e^{i\frac{\pi}{4} \operatorname{sgn} A}}{\left| \det A \right|^{1/2}} (a(0) + O(\varepsilon)).\]
   Consider the formula $(20)$ as $t \rightarrow 0$ gives
   \begin{align*}
-    \lim_{t \rightarrow 0^+} u(x,t) &= \lim_{t \rightarrow 0^+} \frac{1}{(4 \pi i t)^{n/2}} \int_{\mathbb{R}^n} e^{\frac{i \left| x - y \right|^2}{4t}} g(y) dy \qquad \textmd{take } 2t = \varepsilon, y = x-y \\
+    \lim_{t \rightarrow 0^+} u(x,t) &= \lim_{t \rightarrow 0^+} \frac{1}{(4 \pi i t)^{n/2}} \int_{\mathbb{R}^n} e^{\frac{i \left| x - y \right|^2}{4t}} g(y) dy \qquad \textmd{take } 2t = \varepsilon, z = y -x \\
                                     &= \lim_{t \rightarrow 0^+} (\frac{e^{i\frac{n\pi}{4}}}{(i)^{n/2}}(g(x) + O(2t))) \\
     &= g(x).
   \end{align*}
