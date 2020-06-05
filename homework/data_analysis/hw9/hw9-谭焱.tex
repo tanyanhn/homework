@@ -29,6 +29,8 @@
 \usepackage{listings}
 \usepackage{xcolor} %代码高亮
 \usepackage{braket}
+\usepackage{bm}
+\usepackage{booktabs}
 % ------------------
 % common commands %
 % ------------------
@@ -133,6 +135,7 @@
 \newtheorem{frm}[thm]{Formula}
 \newtheorem{ntn}{Notation}
 \newtheorem{pro}[exm]{Problem}
+\newtheorem{problem}[exm]{Problem}
 
 % for complying with the convention in the textbook
 \newtheorem{rmk}[thm]{Remark}
@@ -180,7 +183,7 @@
 % \rhead{Fall 2018}
 
 
-\setcounter{chapter}{10}
+\setcounter{chapter}{8}
 \pagenumbering{arabic}
 % \setcounter{page}{0}
 
@@ -196,11 +199,7 @@
 
 % each chapter is factored into a separate file.
 
-\chapter{Homework 谭焱}
-
-\section{第十一次作业}
-
-
+\chapter{Homework 21935004 谭焱}
 % \begin{lstlisting}
 %   int main(){
 %   double d;
@@ -214,120 +213,126 @@
 
 % \begin{multicols}{2}
 %   \setlength{\columnseprule}{0.2pt}
-%\section{第十一次作业}
-
 \begin{pro}
-  $f \colon \mathring{D}^n \rightarrow \mathring{D}^n $ 连续映射,举例说明$f$ 不一定有不动点.
+  Simpson's rule.
+  \begin{enumerate}[(a)]
+  \item Show that on $[-1,1]$ Simpson's rule can be obtained as follows
+    \[\int_{-1}^1 y(t) dt = \int_{-1}^1 p_3(y; -1,0,0,1;t) dt + E^S(y),\]
+    where $y \in \mathcal{C}^4 [-1,1]$ and $p_3(y;-1,0,0,1;t)$ is the interpolation polynomial of $y$ with interpolation conditions $p_3(-1) = y(-1),p_3(0) = y(0), p_3^\prime(0) = y^\prime(0)$, and $p_3(1) = y(1)$.
 
-  $\mathring{D}^n = \{ (x_1,x_2, \ldots , x_n) \left. \right| \ x_1^n + x_2^2 + \cdots + x_n^2 < 1\}$.
+  \item Derive $E^S(y)$.
+
+  \item Using (a), (b) and a change of variable, derive the composite Simpson's rule and prove the theorem on its error estimation.
+    
+  \end{enumerate}
 \end{pro}
 
 \begin{solution}
-  定义$f \colon \mathring{D}^n \rightarrow \mathring{D}^n,\forall (x_1, x_2,\ldots, x_n) \in \mathring{D}^n $,
-  \begin{align*}
-    f(x_1,x_2,\ldots, x_n) = (x_1/2,x_2/2,\ldots, x_{n-1}/2, (x_n + 1)/2) 
-  \end{align*}
-  已知$\sum\limits_{i=1}^n x_i^2 <1,  x_n < 1$.所以$(x_1/2)^2 + (x_2/2)^2 + \cdots (x_{n-1}/2)^2 + ((x_n + 1)/2)^2 = \frac{1}{4}(\sum\limits_{i=1}^n x_i^2 +2 x_n + 1) < \frac{1}{4}(1 + 2 + 1) = 1$,连续性由定义易得. 所以$f$ 是将$\mathring{D}^n$映射到$\mathring{D}^n$上.并且若有不动点$x, f(x) = x$等价于
-  \begin{align*}
-    \begin{cases}
-      x_i = x_i/2 \qquad i=1,2,\ldots, n-1 \\
-      x_n = (x_n + 1)/2
-    \end{cases}
-  \end{align*}
-  解得 $x = (0,0,\ldots, 0, 1) \not\in \mathring{D}^n$.即$f$没有不动点.即连续函数不一定有不动点.
-\end{solution}
+  \begin{enumerate}[(a)]
+  \item By interpolating, we can get $p_3(y; -1,0,0,1;t) = y(-1) + (y(0) - y(-1))(x+1) + (y^\prime(0) - y(0) + y(-1))x(x+1) + (\frac{y(1) - y(-1) - 2y^\prime(0)}{2})x^2(x+1)$.
+    Intergal $p_3$ get $\int_{-1}^1p_3(y;-1,0,0,1;t)dt = \frac{1}{3}(f(-1) + 4f(0) = f(1))$.
 
+  \item Since $y(x) - p_3(y;x) = \frac{y^{(4)}(x)}{4!}(x+1)x^2(x-1)$,therefore
+    \begin{align*}
+      E^S(y) &= \int_{-1}^1y(t) - p_3(y;-1,0,0,1;t) dt \\
+             &= \int_{-1}^1  \frac{y^{(4)}(t)}{4!}(t+1)t^2(t-1) dt \\
+      &= -\frac{1}{90}f^{(4)}(\zeta).
+    \end{align*}
 
-\begin{pro}
-  设$X$是拓扑空间,将$X \times I$空间中$X \times \{0\}$等置为一点$S$,又将$X \times \{1\}$等置为一点$N$,所得商空间记$SX$,证明: $H_n(SX) \cong \tilde{H}_{n-1}(X)$
-\end{pro}
-
-
-\begin{solution}
-  设$X_1 = SX - \{S\}, X_2 = SX - \{N\}$,则$SX = \mathring{X}_1 \cup \mathring{X}_2, X \times (0,1) = X_1 \cap X_2$.且$X_1,X_2$等价于$X$上的圆锥体内部点不妨都写为$\mathring{CX} = X \times (0,1) \cup \{NS\}$
-
-  定义$F \colon \mathring{CX} \times I \rightarrow  \mathring{CX}$为$F([x,t],s) = [x,(1 -s)t +s]$,连续性显然.可以验证$F([x,t],0) = [x,t] = Id_{\mathring{CX}}, F([x,t],1) = [x,1] = NS$.所以$1_{\mathring{CX}}$是零伦的,由定义 $\mathring{CX}$是可缩的.我们有$H_n(X_1) = H_n(X_2) = 0$.
-
-  定义$f \colon X \rightarrow X \times (0,1), g \colon X \times (0,1) \rightarrow X$为 $f(x) = [x,1/2], g([x,t]) = x$.则有$ (g \circ f)(x) = x, (f \circ g)(x,t) = (x,1/2)$.显然$(g \circ f) \simeq 1_X$,定义 $G \colon (X \times (0,1)) \times I \rightarrow (X \times (0,1))$为 $G([x,t],i) = [x,(t - 1/2)i + 1/2]$,连续性显然.可以验证$G([x,t],0) = [x,1/2] = (f \circ g)(x,t), G([x,t],1) = [x,t] = 1_{X \times (0,1)}$,即$f \circ g \simeq 1_{X_1 \cap X_2}$.所以$X_1 \cap X_2,X$有相同同伦类型,所以$\tilde{H}_n(X_1 \cap X_2) = \tilde{H}_n(X)$
-
-  通过 (Mayer-Vietoris for Reduced Homology) 和$X_1,X_2,SX, X_1 \cap X_2$之间的正合序列
-  \[ \cdots \rightarrow \tilde{H}_n(X_1 \cap X_2) \rightarrow \tilde{H}_n(X_1) \oplus \tilde{H}_n(X_2)\rightarrow \tilde{H}_n (SX) \rightarrow \tilde{H}_{n-1}(X_1 \cap X_2) \rightarrow \cdots.\]
-  和$\tilde{H}_n(X_1) = \tilde{H}_n(X_2) = 0$.可知$H_n(SX) = \tilde{H}_n(SX) \cong \tilde{H}_{n-1}(X_1 \cap X_2) \cong \tilde{H}_{n-1}(X) (n>0)$.
-\end{solution}
-
-\section{第十二次作业}
-
-\begin{pro}
-  定义$f \colon S^2 \rightarrow S^2$ 连续映射为
-  \[(x_0,x_1,x_2) \mapsto (x_0 \cos 5 + x_1 \sin 5, x_0 \sin 5 - x_1 \cos 5, x_3)\]
-  求 $d(f)$.
-\end{pro}
-
-\begin{solution}
-  %取点$x_0$为$(\frac{1}{\sqrt{2(1 - \cos 5)}} \sin 5,\frac{1}{\sqrt{2(1 - \cos 5)}} (1 - \cos 5), 0)$, 可以验证$x_0 \in S^2$, 将$x_0$代入$f$计算得
-  %\begin{align*}
-  %  f(x_0) &= (\frac{1}{\sqrt{2(1 - \cos 5)}}( \sin 5 \times \cos 5 + (1 - \cos 5) \times \sin 5),
-  %        \frac{1}{\sqrt{2(1 - \cos 5)}}( \sin 5 \times \sin 5 - (1 - \cos 5) \times \cos 5),
-   %       0) \\
-   %     &= (\frac{1}{\sqrt{2(1 - \cos 5)}} \sin 5,\frac{1}{\sqrt{2(1 - \cos 5)}} (1 - \cos 5), 0) \\
-   %& = x_0.
-  %\end{align*}
-  %即$x_0$是$f$的不动点.所以$d(f) \not= -1$
-  %又因为
-  %\[f(x) = x \left[ 
-  %    \begin{array}{lll}
-  %      \cos 5 &  \sin 5 & 0 \\
-   %     \sin 5 &  -\cos 5 & 0 \\
-  %      0      &   0     & 1
-  %    \end{array}
-  %  \right] =: x A \]
-  %中$A$是可逆矩阵且因为$\det A = -1 \Longrightarrow \forall x \in S^2, x A^{-1} \in S^2$,所以$f$是双射,即$f$是同伦等价的.即$d(f) = \pm 1$,由上有$d(f) \not= -1$所以$d(f) = 1$.
-  定义$F: S^2 \times I \rightarrow S^2$为
-  \begin{align*}
-    F(x_0,x_1,x_2,t) = (x_0 \cos 5t + x_1 \sin 5t, x_1 \sin 5t - x_1 \cos 5t, x_3).
-  \end{align*}
-  显然$F$ 连续,并且$F(x,0) = (x_0,-x_1,x_2), F(x,1) = f(x)$.所以$d(f) = d(F(x,0)) = 1$.
+  \item
+    \begin{align*}
+      E^S(f) &= \int_{a}^b f(t)dt - \frac{b - a}{6}\left[ f(a) + 4 f(\frac{a + b}{2}) + f(b) \right] \\
+             &= \int_a^b f(t) dt - \int_a^b p_3(f;a,\frac{a+b}{2}, \frac{a+b}{2}, b;t)dt \\
+             &= \int_a^b  \frac{f^{(4)}(t)}{4!}(t-a)(t - \frac{a+b}{2})^2(t-b) dt\\
+      &= - \frac{(b-a)^5}{2880}f^{(4)}(\zeta).
+    \end{align*}
+  \end{enumerate}
 \end{solution}
 
 \begin{pro}
-  作$S^{2n+1}$ 上一个非零切向量场.
+  Estimate the number of subintervals required to approximate $\int_0^1 e^{-x^2}dx$ to 6 correct decimal places, i.e. the absolute error is no greater than $0.5 \times 10^{-6}$,
+  \begin{enumerate}[(a)]
+  \item by the composite trapezoidal rule.
+    \item by the composite Simpson's rule.
+  \end{enumerate}
 \end{pro}
 
 \begin{solution}
-  定义$f\colon S^{2n+1} \rightarrow \mathbb{R}^{2n+2}$,
-  \begin{align*}
-    f(x_0,x_2,\ldots, x_{2n+1}) \mapsto (x_1, -x_0,x_3,-x_2,\ldots, x_{2n+1}, - x_{2n}).
-  \end{align*}
-  显然$f$是非零的,由$x \in S^{2n +1}$.并且满足
-  \begin{align*}
-    \left< x, f(x) \right> &= \sum_{i = 1}^{n+1} (x_{2i-1} x_{2i} + x_{2i} (-x_{2i-1})) \\
-    & = 0.
-  \end{align*}
-  所以$f$是一个非零切向量场.
+  \begin{enumerate}[(a)]
+  \item Let $f(x) = e^{-x^2}$, we have $\left|f^{(2)}(x) \right| = \left|  4x^2 e^{-x^2} - 2e^{-x^2}\right| < 2 $. So by the composite trapezoidal rule,$\left| E^T_n(f) \right| < 0.5 \times 10^{-6} \Longleftarrow \frac{1}{6} h^2 < \frac{1}{2} \times 10^{-6} $. Therefore, the number of subintervals is about $\frac{1}{h} = 578$.
+
+    \item We also have $\left| f^{(4)}(x) \right| < 30$, $\left| E^S_n(f) \right| < 0.5 \times 10^{-6} \Longleftarrow \frac{1}{6} h^4 < \frac{1}{2}\times 10^{-6}$. Therefore, the number of subintervals is about 25.
+  \end{enumerate}
 \end{solution}
 
 \begin{pro}
-  若 $g \colon S^1 \rightarrow S^1$ 连续且保对经, 即$ a^1 \circ g = g \circ a^1$, 证明 $d(g)$奇.
+  Gauss-Larguerre quadrature formula.
+
+  \begin{enumerate}[(a)]
+  \item Construct a polynnomial $\pi_2(t) = t^2 + at + b$ that is orthogonal to $\mathbb{P}_1$ with respect to the weight function $\rho(t) = e^{-t},i.e. $
+    \[\forall p \in \mathbb{P}_1, \qquad \int_0^{+\infty} p(t) \pi_2(t) \rho(t) dt = 0.\]
+    (hint: $\int_0^{+\infty} t^m e^{-t}dt = m! $)
+
+  \item Derive the two-point Gauss-Larguerre quadrature formula
+    \[\int_0^{+\infty} f(t) e^{-t}dt = w_1 f(t_1) +  w_2 f(t_2) + E_2(f)\]
+    and express $E_2(f)$ in terms of $f^{(4)}(\tau)$ for some $\tau > 0$.
+
+  \item Apply the formula in (b) to approximate
+    \[I = \int_0^{+\infty} \frac{1}{1+t} e^{-t} dt.\]
+    Use the remainder to estimate the error and compare your estimate with the true error. With the true error, identify the unknown quantity $\tau$ contained in $E_2(f)$.
+    $(hint$; use the exact value $I = 0.596347361\ldots)$
+  \end{enumerate}
 \end{pro}
 
 \begin{solution}
-  若$g$没有不动点,则$g$与$a^1$同伦,所以$d(g) = 1$是奇数.
+  \begin{enumerate}[(a)]
+  \item Since $\pi_2(t)$ is orthogonal to $\mathbb{P}_1$ indicate that $\langle \pi_2, 1 \rangle = \langle \pi_2,t \rangle = 0$,
+    \begin{align*}
+      \langle \pi_2,1 \rangle &= \int_0^{\infty} e^{-t}(t^2 + at +b) dt \\
+                              & = 2! +  1!a + 0!b = 2 + a + b = 0 \\
+      \langle \pi_2,t \rangle &= \int_0^{\infty} e^{-t}(t^3 + at^2 + b)dt \\
+      &= 3! + 2!a + 1!b = 6 + 2a + b = 0.
+    \end{align*}
+    Solve this get $a = -4,b = 2$.
 
-  若$g$有不动点,不妨设不动点为$(1,0)$.因此$g((-1,0)) = (g \circ a^1)((1,0)) = (a^1 \circ g)((1,0)) = -g((1,0)) = (-1,0)$,即$(-1,0)$也是$g$的不动点.定义路径$\sigma,\tau\colon I \rightarrow S^2$为
-  \[\sigma(t) = (1 - 2t, 4t - 4t^2) \qquad
-  \tau(t) = (1 - 2t, 4t^2 - 4t).\]
-$(g \circ \sigma)((1,0)) = (1,0), (g \circ \sigma)((-1,0)) = (-1,0)$所以$g \circ \sigma$与$k(\sigma - \tau) +\sigma $或$k(\sigma - \tau) + \tau, k \in \mathbb{Z}$定端同伦,不妨设与$k(\sigma - \tau) + \sigma$定端同伦,而且保对经可知$\forall x \in \sigma, -x \in \tau, g(-x) = -g(x) \Longrightarrow g \circ \sigma = - \tau, g \circ \tau = - \sigma$,所以路径$g \circ \tau = g \circ a^1 \circ (-\sigma) = a^1 \circ g \circ (-\sigma) $与$a^1 \circ (k (-\sigma + \tau) - \sigma) =  k(\tau - \sigma) + \tau$定端同伦,合并起来得路径$(g \circ (\sigma - \tau))$与$(2k +1)(\sigma -\tau)$定端同伦.另一方面,因为$\operatorname{cls} (\sigma - \tau)$是 $H_1(S^1)$的生成元,结合$d(g)$的定义可知$g_*(\operatorname{cls} (\sigma - \tau)) = d(g)(\operatorname{cls}\sigma - \tau)$.所以$d(g) = \deg g = 2k + 1$是奇数.
+  \item By (a) get $t_1 = 2+ \sqrt{2}, t_2 = 2 - \sqrt{2}$. And choose $f_1(t) = 1,f_2(t) = t$ respectively give
+    \begin{align*}
+      w_1 1 + w_2 1 = \int_0^{\infty}1 e^{-t}dt = 1 \\
+      w_1 t_1 + w_2 t_2 = \int_0^{\infty}t e^{-t}dt = 1.
+    \end{align*}
+    Solves this equations get $w_1 = \frac{2 - \sqrt{2}}{4},w_2 = \frac{2 + \sqrt{2}}{4}$.
+    $E_2(f) = \frac{f^{(4)}(\tau)}{4!} \int_0^{+\infty} e^{-t} (t^2 -4t +2)^2dt = \frac{f^{(4)}(\tau)}{4!} \int_0^{+\infty} e^{-t} (t^4 - 8t^3 + 20t^2 - 16t +4)dt =  \frac{f^{(4)}(\tau)}{4!} (4! - 8 \times 3! + 20 \times 2! - 16 \times 1! + 4 \times 0!) = \frac{f^{(4)}(\tau)}{6}$.
+
+    \item The remainder $E_2(\frac{1}{1 +t}) = \frac{4}{(1 + t)^5}$, the true error $e = I - w_1f(t_1) - w_2f(t_2) = 0.0249187896 = \frac{4}{(1+\tau)^5} \Longrightarrow \tau =1.7612556$. 
+  \end{enumerate}
 \end{solution}
 
-\begin{pro}
-  若 $g \colon S^2 \rightarrow S^2$ 连续, 且 $\forall x \in S^2, g(x) \not= g(-x)$,则$g$ 满映射.
-\end{pro}
 
-\begin{solution}
-  若$g$不是满映射.不妨设$\exists x_0 \in S^2, s.t. \not\!\exists x \in S^2, g(x) = x_0$.设$g$的值域为$G$, 则从点$x_0$出发作射线可以定义一个单射$f\colon G \rightarrow \mathbb{R}^2 $.所以$f \circ g \colon S^2 \rightarrow \mathbb{R}^2$,并且因为$f$是单射和$\forall x \in S^2, g(x) \not= g(-x)$可知$\forall x \in S^2, (f \circ g)(x) \not= (f \circ g)(-x)$.因此可以定义一个函数$h\colon S^2 \rightarrow S^1$为
-  \[g(x) = ((f \circ g)(x) - (f \circ g)(-x)) / \lVert (f \circ g)(x) - (f \circ g)(-x) \rVert.\]
-  显然$h$是一个保对经映射,这与当$m > 1$时不存在保对经映射$h \colon S^m \rightarrow S^1$矛盾.
-\end{solution}
+\section{Program}
+
+Write a \textbf{C++} function to perform discrete least square via QR factorization. Your algorithm should take as input the maximum degree of the fitting polynomial, three or more data pairs $(x_i,y_i)$, and output coefficients of the fitted polynomial.
+
+Run your subroutine on the following data.
+
+\begin{tabular}{c | c c c c c c c}
+  \toprule 
+  x & 0.0 & 0.5 & 1.0 & 1.5 & 2.0 & 2.5 & 3.0 \\
+  y & 2.9 & 2.7 & 4.8 & 5.3 & 7.1 & 7.6 & 7.7 \\
+  \midrule 
+  x & 3.5 & 4.0 & 4.5 & 5.0 & 5.5 & 6.0 & 6.5 \\
+  y & 7.6 & 9.4 & 9.0 & 9.6 & 10.0 & 10.2 & 9.7 \\
+  \midrule 
+  x & 7.0 & 7.5 & 8.0 & 8.5 & 9.0 & 9.5 & 10.0 \\
+  y & 8.3 & 8.4 & 9.0 & 8.3 & 6.6 & 6.7 & 4.1 \\
+  \bottomrule
+\end{tabular}
+
+In the note, the condition number a matrix A is defined as
+\[\operatorname{cond}_A(\mathbf{x}) = \lVert A \rVert \lVert A^{-1} \rVert. \]
+
+Report the condition number based on the 2-norm of matrix G in the normal equation approach (reuse results of your previous homework!) and that of the matrix $R_1$ in the QR-factorization approach, verifying that the former is much larger than the latter.
+
+\textit{make run} will output the polynomial on terminal and use \textbf{matlab} calculate the condition number. Matlab will output $A, A^{-1}, \lVert A \rVert_2,\lVert A^{-1} \rVert_2,\lVert A \rVert_2\lVert A^{-1} \rVert_2 $ respectively. The condition numbers are $1.8981 \times 10^4, 137.7715$, which shows that former is much larger.
 
 
 %   \section{1}
