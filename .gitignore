@@ -279,6 +279,6 @@ TSWLatexianTemp*
 **/core*
 
 /data
-/output
-/input
+*/output
+*/input
 *.o
