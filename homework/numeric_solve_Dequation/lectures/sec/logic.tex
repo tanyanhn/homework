@@ -1,0 +1,229 @@
+\begin{defn}
+  A \emph{set} ${\cal S}$
+  is a collection of \emph{distinct} objects $x$'s,
+   often denoted with the following notation
+   \begin{equation}
+     \label{eq:setNotation}
+     {\cal S} = \{ x\ |\ \text{ the conditions that $x$ satisfies. } \}.
+   \end{equation}
+\end{defn}
+
+\begin{ntn}
+$\mathbb{R}, \mathbb{Z}, \mathbb{N}, \mathbb{Q}, \mathbb{C}$
+ denote 
+ the sets of real numbers, integers, natural numbers,
+ rational numbers and complex numbers, respectively.
+$\mathbb{R}^+, \mathbb{Z}^+, \mathbb{N}^+, \mathbb{Q}^+$
+ the sets of positive such numbers.
+\end{ntn}
+
+ \begin{defn}
+   ${\cal S}$ is a \emph{subset} of ${\cal U}$,
+    written as ${\cal S}\subseteq {\cal U}$,
+   if and only if (iff) $x\in {\cal S}$ $\Rightarrow$ $x\in {\cal U}$.
+   ${\cal S}$ is a \emph{proper subset} of ${\cal U}$,
+    written as ${\cal S}\subset {\cal U}$,
+    if ${\cal S}\subseteq {\cal U}$
+    and $\exists x\in {\cal U}$ s.t. $x\not\in{\cal S}$.
+ \end{defn}
+
+\begin{defn}[Statements of first-order logic]
+\label{def:uni_exist}
+A \emph{universal statement} is a logic statement 
+ of the form
+\begin{equation}
+  \mathsf{U} = (\forall x\in {\cal S},\ \mathsf{A}(x) ).
+\end{equation}
+An \emph{existential statement} has the form
+\begin{equation}
+  \mathsf{E} = (\exists x\in {\cal S},\text{ s.t. } \mathsf{A}(x)),
+\end{equation}
+ where 
+ $\forall$ (``for each'') and $\exists$ (``there exists'')
+ are the \emph{quantifiers}, ${\cal S}$ is a set,
+ ``s.t.'' means ``such that,''
+ and $\mathsf{A}(x)$ is the \emph{formula}.\\
+A statement of \emph{implication/conditional}
+ has the form
+ \begin{equation}
+   \mathsf{A}\Rightarrow \mathsf{B}.
+ \end{equation}
+\end{defn}
+
+ \begin{exm}
+   Universal and existential statements:\\
+   $\forall x\in[2,+\infty)$, $x>1$;\\
+   $\forall x\in \mathbb{R}^+$, $x>1$;\\
+   $\exists p,q\in \mathbb{Z}, \text{ s.t. } p/q = \sqrt{2}$;\\
+   $\exists p,q\in \mathbb{Z}, \text{ s.t. } \sqrt{p} = \sqrt{q}+1$.
+ \end{exm}
+
+\begin{defn}
+  \emph{Uniqueness quantification}
+   or \emph{unique existential quantification},
+   written $\exists!$ or $\exists_{=1}$, 
+   indicates that exactly one object with a certain property exists.
+\end{defn}
+
+\begin{exc}
+  Express the logic statement $\exists! x, \text{ s.t. } \mathsf{A}(x)$
+   with $\exists$, $\forall$, and $\Leftrightarrow$.
+\end{exc}
+\begin{solution}
+  $\exists x \text{ s.t. }\forall y, \mathsf{A}(y) \Leftrightarrow x=y.$
+\end{solution}
+
+ \begin{rem}
+A logic statement is either true or false.
+There is no such thing that
+ a logic statement is sometimes true and sometimes false.
+To prove a universal statement,
+ conceptually we have to verify the statement
+ for all elements in the set.
+To deny a universal statement,
+ we only need to show a counterexample.
+To prove an existential statement,
+ we only need to show an instance.
+To deny an existential statement,
+ conceptually we have to show that the statement holds
+ for none of the elements.
+ \end{rem}
+
+ \begin{rem}
+   In Definition \ref{def:uni_exist},
+    the formula $\mathsf{A}(x)$ itself
+    might also be a logic statement.
+   Hence universal and existential statements
+    might be nested.
+   This observation leads to the next definition.
+ \end{rem}
+
+ \begin{defn}
+   A \emph{universal-existential statement} is a logic statement 
+   of the form
+   \begin{equation}
+     \mathsf{U}_E =
+     (\forall x\in {\cal S},\ \exists y\in {\cal T}
+     \text{ s.t. } \mathsf{A}(x,y)).
+   \end{equation}
+   An \emph{existential-universal statement} has the form
+   \begin{equation}
+     \mathsf{E}_U =
+     (\exists y\in {\cal T},\text{ s.t. } \forall x\in {\cal S},\ 
+     \mathsf{A}(x,y)).
+   \end{equation}
+ \end{defn}
+
+ \begin{exm}
+   True or false:\\
+   $\forall x\in[2,+\infty)$, $\exists y\in \mathbb{Z}^+$ s.t. $x^y<10^5$;\\
+   $\exists y\in \mathbb{R}$ s.t.
+   $\forall x\in[2,+\infty)$, $x>y$;\\
+   $\exists y\in \mathbb{R}$ s.t.
+   $\forall x\in[2,+\infty)$, $x<y$.
+ \end{exm}
+
+\begin{exc}
+  [Translating an English statement into a logic statement]
+  Goldbach's conjecture states
+   \emph{every even natural number greater than 2
+     is the sum of two primes}.
+ \end{exc}
+\begin{solution}
+  Let $\mathbb{P}\subset \mathbb{N}^+$
+   denote the set of prime numbers.
+  Then Goldbach's conjecture is
+  \begin{displaymath}
+  \forall a\in 2\mathbb{N}^++2,
+   \exists p,q\in \mathbb{P} \text{ s.t. } a=p+q.\qedhere
+  \end{displaymath}
+\end{solution}
+
+\begin{thm}
+   The existential-universal statement
+    implies the corresponding universal-existential statement,
+    but not vice versa.
+ \end{thm}
+
+ \begin{exm}[Translating a logic statement to an English statement]
+   Let ${\cal S}$ be the set of all human beings.\\
+   $U_E=$($\forall p\in{\cal S}, \exists q\in{\cal S}$ s.t. $q$ is $p$'s mom.)
+   \\
+   $E_U$=( $\exists q\in{\cal S}$ s.t.
+   $\forall p\in{\cal S}, $ $q$ is $p$'s mom.)\\
+   $U_E$ is probably true, but $E_U$ is certainly false. \\
+   If $E_U$ were true, then $U_E$ would be true. why?
+ \end{exm}
+
+\begin{axm}[First-order negation of logical statements]
+  The negations of the statements in Definition \ref{def:uni_exist}
+  are
+  \begin{align}
+  \neg \mathsf{U} &= (\exists x\in {\cal S},\text{ s.t. }
+  \neg \mathsf{A}(x)).
+  \\
+  \neg \mathsf{E} &= (\forall x\in {\cal S},\ 
+  \neg \mathsf{A}(x)).
+  \end{align}
+\end{axm}
+
+\begin{rul}
+  The negation of a more complicated logic statement
+   abides by the following rules:
+\begin{itemize}\itemsep0em
+\item switch the type of each quantifier until
+  you reach the last formula without quantifiers;
+\item negate the last formula.
+\end{itemize}
+  One might need to group quantifiers of like type.
+\end{rul}
+
+\begin{exc}
+  Write the logic statement
+   for the negation of Goldbach's conjecture.
+\end{exc}
+\begin{solution}
+  $\exists a\in 2\mathbb{N}^++2$ s.t. $\forall p,q \in \mathbb{P}$, 
+   $a\ne p+q$.
+\end{solution}
+
+   % \begin{exc}
+   %   A weaker version of Goldbach's conjecture states
+   %   \emph{Goldbach's conjecture has
+   %     at most a finite number of of counterexamples}.
+   %   Formulate it into a logical statement
+   %    with explicit quatifiers.
+   % \end{exc}
+
+   % \begin{exc}
+   %   The only even prime is 2.\\
+   %   Multiplication of integers is associative. \\
+   %   Every positive integer has a unique prime factorization.
+   % \end{exc}
+
+\begin{axm}[Contraposition]
+  \label{axm:contrapositive}
+  A conditional statement is logically equivalent to its
+  contrapositive.
+  \begin{equation}
+    \label{eq:contraposition}
+    (\mathsf{A}\Rightarrow \mathsf{B}) \Leftrightarrow
+    (\neg \mathsf{B}\Rightarrow \neg \mathsf{A})
+  \end{equation}
+\end{axm}
+
+\begin{exm}
+  \label{exm:contrapositive}
+  ``If Jack is a man, then Jack is a human being.''
+  is equivalent to ``If Jack is not a human being,
+  then Jack is not a man.''
+\end{exm}
+
+\begin{exc}
+  Draw an Euler diagram of subsets to illustrate Example \ref{exm:contrapositive}.
+\end{exc}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../notesAlgebraicTopology"
+%%% End:

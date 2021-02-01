@@ -1,0 +1,30 @@
+#ifndef POSSIONSOLVER_TY
+#define POSSIONSOLVER_TY
+
+#include "equationsolver.h"
+#include <vector>
+
+namespace solver_ty{
+
+template<int dim>
+class possionsolver : public equationsolver<dim> {
+    void RB_GaussSeidel_Relax();
+    void Relax(std::unique_ptr<Real[]>& v);
+    void Jacobirelax(Real* v, Real f, Real* result);
+    void Fullrestrict(Real* v, Real* result);
+    std::unique_ptr<equationsolver<dim>> Linearinterpolate();
+    std::unique_ptr<equationsolver<dim>> Linearinterpolatet();
+  public:
+    possionsolver(int nn[dim], Real hh[dim],
+                  std::unique_ptr<Real[]> f,
+                  std::unique_ptr<Real[]> initialvalue = nullptr);
+    ~possionsolver(){}
+    void Relax();
+    std::unique_ptr<equationsolver<dim>> Restrict() override;
+    std::unique_ptr<equationsolver<dim>> Interpolate() override;
+    void updatervalue() override;
+    void solver(int*, Real = 10) override;
+};
+
+}
+#endif

@@ -7,10 +7,10 @@ MATLAB := matlab -nodesktop -nosplash -logfile `date +%Y_%m_%d-%H_%M_%S`.log -r
 
 
 .cpp.o:
-	$(CC) -o $@ -c $< $(CPPFLAGS)
+	$(CC) -o $@ -c $< $(CPPFLAGS) -g
 
 .o.ex:
-	$(CC) -o $@ $^ $(CPPFLAGS)
+	$(CC) -o $@ $^ $(CPPFLAGS) -g
 
 all: main.ex
 
@@ -19,7 +19,7 @@ main.ex: main.o function.o
 #main : main.o
 #	$(CC) -o $@ $<
 main.o: interpolation.cpp function.h
-	$(CC) -o $@ -c $< $(CPPFLAGS)
+	$(CC) -o $@ -c $< $(CPPFLAGS) -g
 
 function.o: function.cpp function.h
 

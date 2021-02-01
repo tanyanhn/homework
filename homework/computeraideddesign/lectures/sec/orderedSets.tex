@@ -1,0 +1,249 @@
+\begin{defn}
+  The \emph{Cartesian product} ${\cal X}\times {\cal Y}$
+   between two sets ${\cal X}$ and ${\cal Y}$
+   is the set of all possible ordered pairs with first element
+   from ${\cal X}$ and second element from ${\cal Y}$:
+   \begin{equation}
+     {\cal X}\times {\cal Y} = \{(x,y)\ |\ x\in {\cal X},\ y\in {\cal Y}\}.
+   \end{equation}
+\end{defn}
+
+\begin{axm}[Fundamental principle of counting]
+  \label{axm:multiplicationPrinciple}
+  A task consists of a sequence of $k$ independent steps.
+  Let $n_i$ denote the number of different choices for the $i$-th step,
+   the total number of distinct ways to complete the task
+   is then
+   \begin{equation}
+     \prod_{i=1}^{k} n_i = n_1n_2\cdots n_k.
+   \end{equation}
+ \end{axm}
+
+ \begin{exm}
+   \label{exm:dinnerCombo}
+   Let $A, E, D$ be the set of appetizers,
+    main entrees, desserts in a restaurant.
+   $A\times E\times D$
+    is the set of possible dinner combos.
+   If $\#A=10$, $\#E=5$, $\#D=6$,
+    $\#(A\times E\times D)=300$.
+ \end{exm}
+
+ \begin{rem}
+   The menu of a restaurant in Example \ref{exm:dinnerCombo}
+    seldom contains all the different combinations
+    explicitly spelled out.
+   You simply pick one entry from each category
+    and call the three choices your own dinner.
+   In math learning,
+    you follow a similar pattern.
+   You learn algebra and topology,
+    then you combine the two to learn algebraic topology.
+   The difference is that,
+    the process of coupling the two is much more difficult
+    and much more powerful.
+ \end{rem}
+
+% \begin{defn}[Maximum and minimum]
+%   Consider ${\cal S}\subseteq \mathbb{R}$,
+%    ${\cal S}\ne \emptyset$.
+%   If $\exists s_m\in{\cal S}$
+%    s.t. $\forall x\in {\cal S}$, $x\le s_m$,
+%    then $s_m$ is the \emph{maximum} of ${\cal S}$
+%    and denoted by $\max {\cal S}$.
+%   If $\exists s_m\in{\cal S}$
+%    s.t. $\forall x\in {\cal S}$, $x\ge s_m$,
+%    then $s_m$ is the \emph{minimum} of ${\cal S}$
+%    and denoted by $\min {\cal S}$.
+% \end{defn}
+
+% \begin{defn}[Upper and lower bounds]
+%   Consider ${\cal S}\subseteq \mathbb{R}$,
+%    ${\cal S}\ne \emptyset$.
+%   $a$ is an \emph{upper bound} of ${\cal S}\subseteq \mathbb{R}$
+%   if $\forall x\in {\cal S}$, $x\le a$;
+%    then the set ${\cal S}$ is said to be \emph{bounded above}.
+%   $a$ is a \emph{lower bound} of ${\cal S}$
+%    if $\forall x\in {\cal S}$, $x\ge a$;
+%    then the set ${\cal S}$ is said to be \emph{bounded below}.
+%   ${\cal S}$ is \emph{bounded}
+%    if it is bounded above and bounded below.
+% \end{defn}
+
+% One difference between a maximum and an upper bound
+%  is that the former belongs to the set
+%  while the latter might not.
+% Another difference is that,
+%  for a bounded interval,
+%  the upper bound always exists
+%  while the maximum might not exist.
+
+% \begin{defn}[Supremum and infimum]
+%   Consider ${\cal S}\subseteq \mathbb{R}$,
+%    ${\cal S}\ne \emptyset$.
+%   If ${\cal S}$ is bounded above and ${\cal S}$
+%    has a least upper bound 
+%    then we call it the \emph{supremum}
+%    of ${\cal S}$
+%    and denote it by $\sup {\cal S}$.
+%   If ${\cal S}$ is bounded below and ${\cal S}$
+%    has a greatest lower bound,
+%    then we call it the \emph{infimum}
+%    of ${\cal S}$
+%    and denote it by $\inf {\cal S}$.
+% \end{defn}
+
+% \begin{exm}
+%   If ${\cal S}$ has a maximum, then $\max{\cal S}=\sup {\cal S}$.
+% \end{exm}
+
+% \begin{exm}
+%   $\sup[a,b]=\sup[a,b)=\sup(a,b]=\sup(a,b)$.
+% \end{exm}
+
+% \begin{axm}[Completeness of $\mathbb{R}$]
+%   Every nonempty subset of $\mathbb{R}$ %${\cal S}\subseteq \mathbb{R}$
+%    that is bounded above has a least upper bound.
+% \end{axm}
+
+% In other words, 
+%  for any nonempty ${\cal S}\subseteq \mathbb{R}$ bounded above,
+%  $\sup {\cal S}$ exists and is a real number.
+
+%  \begin{coro}
+%   Every nonempty subset of $\mathbb{R}$ %${\cal S}\subseteq \mathbb{R}$
+%    that is bounded below has a greatest lower bound.
+%  \end{coro}
+
+ \begin{defn}
+   A \emph{binary relation between two sets} ${\cal X}$ and ${\cal Y}$
+    is an ordered triple
+    (${\cal X}, {\cal Y}, {\cal G}$)
+    where ${\cal G}\subseteq{\cal X}\times{\cal Y}$.\\
+    % or equivalently, a map
+    % $R: {\cal X}\times{\cal Y}\rightarrow {\cal G}$.\\
+  A \emph{binary relation on} ${\cal X}$
+    is the relation between ${\cal X}$ and ${\cal X}$.\\
+  The statement $(x,y)\in R$ is read
+   ``$x$ is $R$-related to $y$,'' and
+   denoted by $xRy$ or $R(x,y)$.
+ \end{defn}
+
+  \begin{defn}
+   \label{defn:equivalenceRelation}
+    An \emph{equivalence relation} ``$\sim$'' on ${\cal A}$ is 
+    a binary relation on ${\cal A}$ 
+    that satisfies
+    $\forall a,b,c\in{\cal A}$,
+    \begin{itemize}
+      \itemsep0em
+    \item $a\sim a$ (reflexivity);
+    \item $a\sim b$ implies $b\sim a$ (symmetry);
+    \item $a\sim b$ and $b\sim c$ imply $a\sim c$ (transitivity).
+    \end{itemize}
+  \end{defn}
+
+ \begin{defn}
+   \label{defn:totalOrder}
+   A binary relation ``$\le$'' on some set ${\cal S}$
+    is a \emph{total order} or \emph{linear order} on ${\cal S}$
+    iff,
+    $\forall a,b,c\in{\cal S}$,
+    \begin{itemize}
+    \item $a\le b$ and $b\le a$ imply $a=b$ (antisymmetry);
+    \item $a\le b$ and $b\le c$ imply $a\le c$ (transitivity);
+    \item $a\le b$ or $b\le a$ (totality).
+    \end{itemize}
+   A set equipped with a total order
+    is a \emph{chain} or \emph{totally ordered set}.
+ \end{defn}
+
+ \begin{exm}
+   The real numbers with less or equal.
+ \end{exm}
+
+ \begin{exm}
+   The English letters of the alphabet with dictionary order.
+ \end{exm}
+
+ \begin{exm}
+   The Cartesian product of a set of totally ordered sets
+   with the \emph{lexicographical order}.
+ \end{exm}
+
+ \begin{exm}
+   Sort your book in lexicographical order
+    and save a lot of time.
+   $\log_{26}N \ll N$!
+ \end{exm}
+
+ \begin{defn}
+   \label{def:partialOrder}
+   A binary relation ``$\le$'' on some set ${\cal S}$
+    is a \emph{partial order} on ${\cal S}$
+    iff, $\forall a,b,c\in{\cal S}$,
+    antisymmetry, transitivity, and reflexivity ($a\le a$)
+    hold.\\
+   A set equipped with a partial order
+    is a called a \emph{poset}.
+ \end{defn}
+
+ \begin{rem}
+   Change the symmetry condition 
+   in Definition \ref{defn:equivalenceRelation}
+   to antisymmetry condition
+   in Definition \ref{def:partialOrder}
+   and you navigate from the equivalence relation
+   to the partial order.
+ \end{rem}
+
+ \begin{exm}
+   The set of subsets of a set ${\cal S}$
+    ordered by inclusion ``$\subseteq$.''
+   In this class we will not distinguish
+    between ``$\subseteq$'' and ``$\subset$.''
+ \end{exm}
+
+ \begin{exm}
+   The natural numbers equipped with the relation of divisibility.
+ \end{exm}
+
+ \begin{exm}
+   The set of stuff you will put on your body every morning
+    with the time ordered:
+    undershorts, pants, belt, shirt, tie, jacket,
+    socks, shoes, watch.
+ \end{exm}
+
+ \begin{exm}
+   \label{exm:inheritance}
+   Inheritance (``is-a'' relation) is a partial order.
+   $A \rightarrow B$ reads ``$B$ is a special type of $A$''.
+ \end{exm}
+
+ \begin{exm}
+   \label{exm:composition}
+   Composition (``has-a'' relation) is also a partial order.
+   $A \leadsto B$ reads
+     ``B \emph{has an} instance/object of A.''
+ \end{exm}
+
+ \begin{exm}
+   \label{exm:implication}
+   Implication ``$\Rightarrow$''
+    is a partial order on the set of logical statements.
+ \end{exm}
+
+ \begin{exm}
+   The set of definitions, axioms,
+    propositions, theorems, lemmas, etc., 
+    is a poset with inheritance, composition, and implication.
+   It is helpful to relate them with these partial orderings.\\
+   ``If syntax sugar does not count, there is nothing left.''
+ \end{exm}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../notesAlgebraicTopology"
+%%% End:

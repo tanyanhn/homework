@@ -1,0 +1,716 @@
+% To decouple from abstract algebra as much as possible,
+%  we first give an alternative definition that
+%  a field is a commutative division ring.
+
+\begin{defn}
+  \label{def:field}
+  A \emph{field} $\mathbb{F}$ is a set together with two binary
+  operations ``$+$'' and ``$*$,''
+  usually called ``addition'' and ``multiplication,''
+  such that 
+  the following axioms hold
+  \mbox{$\forall a,b,c\in\mathbb{F}$},
+  \begin{itemize}\itemsep0em
+  \item commutativity: $a+b=b+a$, $ab=ba$;
+  \item associativity: $a+(b+c)=(a+b)+c$, $a(bc)=(ab)c$;
+  \item identity: $a+0=a$, $a1=a$; % $0\ne 1$;
+  \item invertibility: $a+(-a)=0$, $a\ne 0 \Rightarrow a a^{-1}=1$;
+  \item distributivity: $a(b+c)=ab+ac$,
+  \end{itemize}
+  where the distinguished members $0,1\in \mathbb{F}$ are called the
+  \emph{additive identity} and \emph{multiplicative identity},
+  respectively.
+\end{defn}
+
+\begin{exc}
+  What is the smallest field?
+\end{exc}
+\begin{solution}
+  It is of course $\{0,1\}$.
+\end{solution}
+
+\begin{exc}
+  For $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$,
+  $\mathbb{Z}$,
+  which of them are fields, which of them are not?
+\end{exc}
+\begin{solution}
+  $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$
+  are all fields.
+  $\mathbb{Z}$ is not.
+\end{solution}
+
+
+\subsection{Vector spaces}
+
+\begin{defn}
+  \label{def:vectorSpace}
+  A \emph{vector space} or \emph{linear space}
+   over a field $\mathbb{F}$ is a set $V$
+   together with a binary operation
+   $+:V\times V\rightarrow V$
+   and another scalar multiplication
+   $\cdot:\mathbb{F}\times V \rightarrow V$
+   respectively called vector addition and scalar multiplication
+   that satisfy the following axioms:
+   \begin{enumerate}[({VSA}-1)]\itemsep0em
+   \item associativity\\
+     $\forall \mathbf{u},\mathbf{v}, \mathbf{w}\in V$,\ 
+     $(\mathbf{u}+\mathbf{v})+\mathbf{w}
+     =\mathbf{u}+(\mathbf{v}+\mathbf{w})$;
+   \item additive identity\\
+     $\exists \mathbf{0}\in V$,
+     $\forall \mathbf{u}\in V$,
+     s.t. $\mathbf{u}+\mathbf{0}=\mathbf{u}$;
+   \item additive inverse\\
+     $\forall \mathbf{u}\in V$,
+     $\exists \mathbf{v}\in V$,
+     s.t. $\mathbf{u}+\mathbf{v}=\mathbf{0}$;
+   \item commutativity\\
+     $\forall \mathbf{u},\mathbf{v}\in V$,\ 
+     $\mathbf{u}+\mathbf{v}=\mathbf{v}+\mathbf{u}$;
+   \item multiplicative identity\\
+%     $\exists 1 \in \mathbb{F}$, s.t.
+     $\forall \mathbf{u}\in V$,
+     $1\mathbf{u}=\mathbf{u}$;
+   \item compatibility\\
+     $\forall \mathbf{u}\in V$, $\forall a,b\in \mathbb{F}$, 
+     $(ab)\mathbf{u} = a(b\mathbf{u})$;
+   \item distributive laws
+     \begin{displaymath}
+       \forall \mathbf{u},\mathbf{v}\in V,\ 
+       \forall a,b\in \mathbb{F},\ 
+       \left\{
+       \begin{array}{l}
+         (a+b)\mathbf{u}=a\mathbf{u}+b\mathbf{u}, \\
+         a(\mathbf{u}+\mathbf{v})=a\mathbf{u}+a\mathbf{v}.
+       \end{array}
+       \right.
+     \end{displaymath}
+   \end{enumerate}
+  The elements of $V$ are called \emph{vectors}
+   and the elements of $\mathbb{F}$ are called \emph{scalars}.
+\end{defn}
+
+% \begin{defn}
+%   A vector space over $\mathbb{R}$ or $\mathbb{C}$
+%    is called a \emph{real vector space}
+%    or a \emph{complex vector space},
+%    respectively.
+%   Hereafter we confine ourselves to these two types
+%    of vector spaces.
+% \end{defn}
+
+% \begin{rem}
+% The scalar multiplication
+%  is defined on a scalar and a vector,
+%  not on two vectors.
+% For a vector space $V$,
+%     $(V,+)$ is an Abelian group.
+% %
+% A ring has two operations and a group has one operations;
+%  both have only one set.
+% Here a vector space has two sets and two operations.
+% (VSA-3,6) are about the connection
+%  between these two sets
+%  and (VSA-7) is about the connection
+%  between these two operations.
+% Why should the sets and operations be connected?
+% Because if they are disconnected, 
+%  they are simply an agglomeration of simpler concepts
+%  and do not justify the need of a new concept.
+% \end{rem}
+
+\begin{exm}
+  The Euclidean $n$-space $\mathbb{R}^n$
+   over the field $\mathbb{R}$
+   is a vector space.
+  In particular, $\mathbb{R}$ is a vector space
+   where the scalars and vectors are the same set.
+  Then the vector space reduces to a field.
+\end{exm}
+
+\begin{exm}
+  Let ${\cal C}[a,b]$ be the set of functions
+  $\mathbb{R}\rightarrow \mathbb{R}$
+   that are continuous on $[a,b]$.
+  This is also a vector space.
+\end{exm}
+
+% \begin{exm}
+%   The set of curves
+%   $\{f:\mathbb{R}\rightarrow \mathbb{R}^2, f\in{\cal C}(\mathbb{R})\}$
+%   is a vector space.
+% \end{exm}
+
+\begin{exm}
+  \label{exm:polynomialsFormVectorSpace}
+  The set of polynomials ${\mathbb R}[x]$
+   with their orders less than a fixed integer
+   is a vector space.
+\end{exm}
+
+% \begin{exm}
+%   Both $\mathbb{R}^2$ and $\mathbb{C}$
+%    can be considered as a two-dimensional
+%    \emph{real} vector space.
+% \end{exm}
+
+% \begin{exm}
+%   \label{exm:groupAsVectorSpace}
+% \end{exm}
+
+\begin{defn}
+  A \emph{list of length $n$ or $n$-tuple}
+   is an ordered collection
+   of $n$ objects separated by commas and surrounded by parentheses:
+   $(x_1, \ldots, x_n)$.
+\end{defn}
+
+\begin{rem}
+  An $n$-tuple is different from a set in that repetition
+  of the same objects are allowed.
+\end{rem}
+
+\begin{defn}
+  A \emph{linear combination} of a list
+   of vectors $\{\mathbf{v}_i\}$ is a vector of the form
+   $\sum_ia_i\mathbf{v}_i$ where $a_i\in \mathbb{F}$.
+\end{defn}
+
+\begin{exm}
+  Matrix-vector product can be viewed as a linear combination
+   of the column vectors of the matrix.
+\end{exm}
+
+\begin{defn}
+  \label{def:span}
+  The \emph{span} of a $m$-tuple $(\mathbf{v}_1,\ldots,\mathbf{v}_m)$
+   is the set of all linear combinations of these vectors,
+   \begin{equation}
+     \label{eq:span}
+     \Span(\mathbf{v}_1, \ldots, \mathbf{v}_m)
+     = \left\{\sum_{i=1}^m a_i\mathbf{v}_i : a_i\in \mathbb{F}\right\}.
+   \end{equation}
+  In particular, the span of the empty set is $\{\mathbf{0}\}$.
+   We say that $(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_m)$
+   \emph{spans} $V$
+   if $V=\Span(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_m)$.
+\end{defn}
+
+\begin{exm}
+  The two vectors $(1,0)$ and $(0,1)$ span
+  the whole Euclidean plane.
+\end{exm}
+
+\begin{defn}
+  A vector space $V$ is called \emph{finite dimensional}
+   if some finite list of vectors span $V$;
+   otherwise it is called \emph{infinite dimensional}.
+\end{defn}
+
+\begin{rem}
+Linear algebra concerns finite-dimensional vector spaces
+ and infinite-dimensional vector spaces
+ are the subject of functional analysis.
+\end{rem}
+
+ \begin{defn}
+   \label{def:linearIndependent}
+   A list of vectors $(\mathbf{v}_1, \mathbf{v}_2, \ldots,
+   \mathbf{v}_m)$
+   in $V$ is called \emph{linearly independent}
+   iff
+   \begin{equation}
+     \label{eq:linearIndependent}
+     \sum_{i=1}^m a_i \mathbf{v}_i = \mathbf{0}
+     \ \Rightarrow\ \forall i, a_i=0.
+   \end{equation}
+   Otherwise the list of vectors is called \emph{linearly dependent}.
+ \end{defn}
+
+ \begin{defn}
+   A \emph{basis} of a vector space $V$ 
+    is a list of vectors in $V$ 
+    that is linearly independent
+     and spans $V$.
+   In particular, the list of vectors
+   \begin{equation}
+     \label{eq:standardBasis}
+     \bigl((1,0,\cdots,0)^T,\  (0,1,0,\cdots,0)^T,\ 
+     \ldots,\ (0,\cdots,0, 1)^T\bigr)
+   \end{equation}
+    is called the \emph{standard basis} of $\mathbb{F}^n$.
+ \end{defn}
+
+ \begin{defn}
+   The \emph{dimension} of a finite-dimensional vector space
+    $V$,
+    denoted $\dim V$,
+    is the length of any basis of the vector space.
+ \end{defn}
+
+ \begin{thm}
+   If $V$ is finite-dimensional,
+    then every \emph{minimal spanning list} in $V$,
+    i.e. a spanning list of vectors with length $\dim V$,
+    is a basis of $V$.
+ \end{thm}
+
+ \begin{thm}
+   \label{thm:linearIndependentListWithDimNIsABasis}
+   If $V$ is finite-dimensional,
+    then every \emph{maximal linearly independent list} in $V$,
+    i.e. a linearly independent list of vectors
+    with length $\dim V$, 
+    is a basis of $V$.
+ \end{thm}
+
+\subsection{Linear maps}
+\label{sec:linear-maps}
+
+ \begin{defn}
+   \label{def:linearMap}
+   A \emph{linear map} or \emph{linear transformation}
+    between two vector spaces $V$ and $W$
+    is a function $T: V\rightarrow W$
+    that satisfies
+    \begin{enumerate}[(LNM-1)]\itemsep0em
+      \itemsep0em
+    \item additivity\\
+      $\forall \mathbf{u}, \mathbf{v}\in V$,\ 
+      $T(\mathbf{u}+\mathbf{v}) = T\mathbf{u} + T\mathbf{v}$;
+    \item homogeneity\\
+      $\forall a\in \mathbb{F}$, $\forall\mathbf{v}\in V$,\ 
+      $T(a\mathbf{v})=a(T\mathbf{v})$,
+    \end{enumerate}
+    where $\mathbb{F}$ is the underlying field
+    of $V$ and $W$.
+   In particular, a linear map is called a \emph{linear operator}
+    if $W=V$.
+ \end{defn}
+
+ \begin{ntn}
+   The set of all linear maps from $V$ to $W$
+    is denoted by ${\cal L}(V, W)$.
+   The set of all linear operators from $V$ to itself
+    is denoted by ${\cal L}(V)$.
+ \end{ntn}
+
+\begin{defn}
+  \label{def:linearFunctional}
+  A \emph{linear functional} on $V$ is a linear map
+   from $V$ to $\mathbb{F}$,
+   or, it is an element of ${\cal L}(V,\mathbb{F})$.
+\end{defn}
+
+ \begin{exm}
+   \label{exm:polynomialDiffIsLinearMap}
+   The differentiation operator on $\mathbb{R}[x]$
+    is a linear map
+    $T\in {\cal L}(\mathbb{R}[x],\mathbb{R}[x])$
+  \end{exm}
+
+\begin{exm}
+  $\mathbb{F}^{m\times n}={\cal L}(\mathbb{R}^n, \mathbb{R}^m)$
+  is a vector space with the additive identity
+  as the zero map $\mathbf{0}$.
+\end{exm}
+
+ \begin{lem}
+   The set ${\cal L}(V, W)$,
+    equipped with
+    vector addition
+    \mbox{$(S+T)\mathbf{v} = S\mathbf{v}+ T\mathbf{v}$}
+    and scalar multiplication
+    $(aT)\mathbf{v}= a(T\mathbf{v})$
+    is a vector space.
+ \end{lem}
+ \begin{proof}
+   The scalar field $\mathbb{F}$ of ${\cal L}(V, W)$
+    is the same as that of $V$ and $W$.
+   So multiplicative identity is still 1,
+    the same as that of $\mathbb{F}$.
+   However, the additive identity is the zero map
+   $\mathbf{0} \in {\cal L}(V, W)$.
+ \end{proof}
+
+\begin{defn}
+   The \emph{identity map}, denoted by $I$,
+    is the function on a vector space
+    that assigns to each element to the same element:
+    \begin{equation}
+      \label{eq:identityMap}
+      I\mathbf{v} = \mathbf{v}.
+    \end{equation}
+ \end{defn}
+
+\begin{defn}
+  \label{def:nullSpace}
+  The \emph{null space} of a linear map
+   \mbox{$T\in {\cal L}(V, W)$}
+   is the subset of $V$ consisting of those vectors
+   that $T$ maps to the additive identity $\mathbf{0}$:
+   \begin{equation}
+     \label{eq:nullSpace}
+     \Null\ T = \{\mathbf{v}\in V : T\mathbf{v}=\mathbf{0}\}.
+   \end{equation}
+\end{defn}
+
+\begin{exm}
+  The null space of the differentiation map
+   in Example \ref{exm:polynomialDiffIsLinearMap} is $\mathbb{R}$.
+\end{exm}
+
+\begin{defn}
+  \label{def:range}
+  The \emph{range} of a linear map
+   \mbox{$T\in {\cal L}(V, W)$}
+   is the subset of $W$ consisting of those vectors
+   that are of the form $T\mathbf{v}$ for some $\mathbf{v}\in V$:
+   \begin{equation}
+     \label{eq:range}
+     \Range\ T = \{T\mathbf{v}: \mathbf{v}\in V\}.
+   \end{equation}
+\end{defn}
+
+\begin{exm}
+  The range of $A\in \mathbb{F}^{m\times n}$
+   is the span of its column vectors.
+\end{exm}
+
+\begin{thm}
+  \label{thm:dimensionsOfNullAndRange}
+  If $V$ is a finite-dimensional vector space
+   and $T\in {\cal L}(V, W)$,
+   then $\Range\ T$ is a finite-dimensional subspace of $W$
+   and
+   \begin{equation}
+     \label{eq:dimensionsOfNullAndRange}
+     \dim V = \dim \Null\ T + \dim \Range\ T.
+   \end{equation}
+\end{thm}
+
+\begin{defn}
+  \label{def:matrixOfLinearMap}
+  The \emph{matrix of a linear map
+    \mbox{$T\in {\cal L}(V, W)$}
+    with respect to the bases}
+   $(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n)$
+   of $V$
+   and $(\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_m)$
+   of $W$, denoted by
+   \begin{equation}
+    \label{eq:matrixOfLinearMap}
+    A_T:=M(T, (\mathbf{v}_1, \ldots, \mathbf{v}_n),
+    (\mathbf{w}_1, \ldots, \mathbf{w}_m)),
+   \end{equation}
+   is the $m\times n$ matrix $A(T)$
+   whose entries $a_{i,j}\in \mathbb{F}$
+   satisfy the linear system
+   \begin{equation}
+      \forall j=1,2,\ldots,n, \qquad
+      T\mathbf{v}_j = \sum_{i=1}^m a_{i,j}\mathbf{w}_i.
+     %  = a_{1,j}\mathbf{w}_1 %+ a_{2,j}\mathbf{w}_2
+     % + \cdots + a_{m,j}\mathbf{w}_m,
+   \end{equation}
+\end{defn}
+
+\begin{rem}
+  There are $m\times n$ equations and  $m\times n$ variables
+   in the linear system (\ref{eq:matrixOfLinearMap}).
+  In $\sum_{i=1}^m a_{i,j}\mathbf{w}_i$,
+   we index $a$ as $a_{i,j}$, not $a_{j,i}$, why?
+  Because when we write it in matrix product form,
+   $a_{i,j}$ naturally corresponds to the $(i,j)$ entry of the matrix.
+\end{rem}
+
+\begin{rem}
+  When $m\ne n$,
+   any matrix $\mathbb{F}^{m\times n}$ cannot be one-to-one
+   and hence $V$ and $W$ cannot be isomorphic.
+  It is well known that $V$ and $W$ are isomorphic
+   if and only if they have the same dimension.
+  Hence if the matrix of the linear operator $T$ is non-singular,
+   $T$ must be an automorphism.
+\end{rem}
+
+\begin{coro}
+  \label{coro:matrixOfLinearMap}
+  The matrix $A_T$ in (\ref{eq:matrixOfLinearMap})
+   of a linear map
+   \mbox{$T\in {\cal L}(V, W)$}
+   satisfies
+  \begin{equation}
+    \label{eq:relationOfLinearMapToItsMatrix}
+    T [\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n]
+    =[\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_m] A_T.
+%    =: W A_T.
+  \end{equation}
+\end{coro}
+\begin{proof}
+  This follows directly from (\ref{eq:matrixOfLinearMap}).
+\end{proof}
+
+\begin{rem}
+Definition \ref{def:matrixOfLinearMap} 
+ packages an essential idea:
+ if we express any vector as a linear combination
+ of the basis
+ and insist on the conditions in Definition \ref{def:linearMap},
+ the action of a linear map on an arbitrary vector 
+ can be characterized by the effects on the two bases
+ via the corresponding matrix of the linear map.
+More precisely,
+ for $\mathbf{u}=\sum_i c_i\mathbf{v}_i$,
+ we have 
+ \begin{align*}
+   T\mathbf{u} = \sum_i c_iT\mathbf{v}_i = T [\mathbf{v}_1, \ldots, \mathbf{v}_n] \mathbf{c}
+   = [\mathbf{w}_1, \ldots, \mathbf{w}_m] A_T \mathbf{c}.
+ \end{align*}
+ Finally, a linear map does not depend on
+ the choice of basis while its corresponding matrix does.
+\end{rem}
+
+
+\subsection{Dual vector spaces}
+\label{sec:dual-space}
+
+\begin{defn}
+  \label{def:dualSpace}
+  The \emph{dual space} of a vector space $V$
+   is the vector space of all linear functionals on $V$,
+   \begin{equation}
+     \label{eq:dualSpace}
+     V'={\cal L}(V,\mathbb{F}).
+   \end{equation}
+\end{defn}
+
+\begin{defn}
+  \label{def:dualBasis}
+  For a basis $\mathbf{v}_1,\ldots, \mathbf{v}_n$ of a vector space $V$,
+   its \emph{dual basis}
+   is the list $\varphi_1, \ldots, \varphi_n$
+   where each $\varphi_j\in V'$ is
+   \begin{equation}
+     \label{eq:dualBasis}
+     \varphi_j(\mathbf{v}_k) = 
+     \begin{cases}
+       1 & \textrm{if } k=j,
+       \\
+       0 & \textrm{if } k\ne j.
+     \end{cases}
+   \end{equation}
+\end{defn}
+
+\begin{exc}
+  \label{exc:basicChainsCochainsAreBasis}
+  Show that the dual basis is a basis of the dual space.
+  % basic chains form a basis for the vector space $C_k$
+  % and basic cochains form a basis for the vector space $C^k$.
+\end{exc}
+\begin{solution}
+  This follows from the definition of linear independence
+   and Definition \ref{def:dualBasis}.
+\end{solution}
+ 
+\begin{lem}
+  \label{lem:dimV=dimV'}
+  A finite-dimensional vector space $V$ satisfies
+  \begin{equation}
+    \label{eq:dimV=dimV'}
+     \dim V' = \dim V.
+  \end{equation}
+\end{lem}
+\begin{proof}
+  This follows from Definition \ref{def:dualSpace}
+  and the identity
+  $\dim {\cal L}(V,W) = \dim(V) \dim(W)$.
+\end{proof}
+
+\begin{defn}
+  \label{def:doubleDualSpace}
+  The \emph{double dual space} of a vector space $V$,
+   denoted by $V''$, 
+   is the dual space of $V'$.
+\end{defn}
+
+\begin{rem}
+  A map $\theta\in V''$ has the signature
+   $\theta: V'\rightarrow \mathbb{F}$.
+\end{rem}
+
+\begin{lem}
+  \label{lem:dualDualAuxFunc}
+  The function $\Lambda: V\rightarrow V''$
+   defined as
+   \begin{equation}
+     \label{eq:dualDualAuxFunc}
+     \forall v\in V, \forall \varphi\in V',\qquad
+     (\Lambda v) (\varphi) = \varphi(v)
+   \end{equation}
+   is a linear bijection.
+%   and hence an isomorphism between $V$ and $V''$.
+\end{lem}
+\begin{proof}
+  It is easily verified that
+   $\Lambda$ is a linear map.
+  The rest follows from
+   Definitions \ref{def:dualSpace}, \ref{def:doubleDualSpace},
+   and Lemma \ref{lem:dimV=dimV'}.
+\end{proof}
+
+\begin{rem}
+ If $V$ is finite-dimensional,
+  $V'$ and $V$ are isomorphic,
+  but finding an isomorphism from $V$ onto $V'$
+  generally requires choosing a basis of $V$.
+ In contrast, the isomorphism $\Lambda$ from $V$ onto $V''$
+  does not require a choice of basis and
+  is considered more natural.  
+\end{rem}
+
+
+\subsection{Dual linear maps}
+
+\begin{defn}
+  \label{def:dualMap}
+  The \emph{dual map} of a linear map $T: V\rightarrow W$
+   is the linear map $T': W'\rightarrow V'$
+   defined as
+   \begin{equation}
+     \label{eq:dualMap}
+     \forall\varphi\in W',\qquad
+     T'(\varphi) = \varphi\circ T.
+   \end{equation}
+\end{defn}
+
+\begin{exc}
+  Denote by $\dif$ the linear map $\dif p = p'$ on 
+   the vector space ${\cal P}(\mathbb{R})$
+   of polynomials with real coefficients.
+  Under the dual map of $\dif$,
+  what is the image of
+   the linear functional $\varphi(p)=\int_0^1 p$
+   on ${\cal P}(\mathbb{R})$?   
+\end{exc}
+\begin{solution}
+  \begin{displaymath}
+     (\dif' \varphi)(p) = (\varphi\circ \dif)(p)
+     = \varphi(p') = \int_0^1 p' = p(1) - p(0).
+  \end{displaymath}
+\end{solution}
+
+\begin{thm}
+  \label{thm:matrixOfDualMap}
+  The matrix of $T'$ is the transpose of the matrix of $T$.
+\end{thm}
+\begin{proof}
+  Exercise.
+\end{proof}
+
+\begin{defn}
+  \label{def:doubleDualMap}
+  The \emph{double dual map} of a linear map $T: V\rightarrow W$
+   is the linear map $T'': V''\rightarrow W''$
+   defined as $T'' = (T')'$.
+\end{defn}
+
+\begin{thm}
+  \label{thm:doubleDualMapCommute}
+  For $T\in {\cal L}(V)$ and $\Lambda$ in (\ref{eq:dualDualAuxFunc}),
+   we have
+   \begin{equation}
+     \label{eq:doubleDualMapCommute}
+     T''\circ \Lambda = \Lambda\circ T.
+   \end{equation}
+\end{thm}
+\begin{proof}
+  Definition \ref{def:doubleDualMap} and
+   equation (\ref{eq:dualDualAuxFunc}) yields
+   \begin{align*}
+     \forall v\in V,&\ \ \forall \varphi\in V',
+     \\
+     (T''\circ \Lambda) v \varphi
+     &= ((T')' \Lambda v) \varphi
+     = (\Lambda v \circ T')\varphi
+     = \Lambda v ( T'\varphi)
+     \\
+     &= (T' \varphi) (v)
+     = \varphi(Tv)
+     = \Lambda(Tv)(\varphi)
+       \\
+     &= (\Lambda\circ T) v \varphi,
+   \end{align*}
+   where the third step is natural
+   since $T'$ send $V'$ to $V'$.
+\end{proof}
+
+\begin{coro}
+  \label{coro:doubleDualMapFiniteDim}
+  For $T\in {\cal L}(V)$ where $V$ is finite-dimensional,
+   the double dual map is
+   \begin{equation}
+     \label{eq:doubleDualMapFiniteDim}
+     T'' = \Lambda\circ T \circ \Lambda^{-1}.
+   \end{equation}
+\end{coro}
+\begin{proof}
+  This follows directly from Theorem \ref{thm:doubleDualMapCommute}
+   and Lemma \ref{lem:dualDualAuxFunc}.
+\end{proof}
+
+% \begin{exc}
+%   Draw commutative diagrams to illustrate
+%    Lemma \ref{lem:dualDualAuxFunc},
+%    Theorem \ref{thm:doubleDualMapCommute},
+%    and Corollary \ref{coro:doubleDualMapFiniteDim}.
+% \end{exc}
+
+\begin{rem}
+For $T\in {\cal L}(V)$,
+   the linear map $\Lambda$ in Lemma \ref{lem:dualDualAuxFunc}
+   can be used to construct a formula of $T''$.
+  By the signature of $T'':V''\rightarrow V''$,
+   the input of $T''$ is a linear functional
+   $\pi:V''\rightarrow \mathbb{F}$.
+  By sending $V$ to $V''$,
+   $\Lambda$ satisfies
+   $\varphi = \pi\circ \Lambda$, 
+% essentially identifies
+%    the map $\pi:V''\rightarrow \mathbb{F}$
+%    with $\varphi:V\rightarrow\mathbb{F}$,
+   as shown below.
+   \begin{displaymath}
+     \begin{tikzcd}[column sep=3em]
+       V'' \ar{dr}{\pi} 
+       & 
+       \\
+       V \ar{u}{\Lambda} \ar{r}{\varphi}
+       & \mathbb{F}
+     \end{tikzcd}
+   \end{displaymath}
+  The commutative diagram for Theorem \ref{thm:doubleDualMapCommute}
+   is as follows.
+   \begin{displaymath}
+     \begin{tikzcd}[column sep=3em]
+       V'' \ar{r}{T''} 
+       & V''
+       \\
+       V \ar{u}{\Lambda} \ar{r}{T}
+       & V \ar{u}{\Lambda} 
+     \end{tikzcd}
+   \end{displaymath}
+  Flip the direction of the left arrow
+   and we have the diagram for Corollary \ref{coro:doubleDualMapFiniteDim}.
+\end{rem}
+
+ 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../notesAlgebraicTopology"
+%%% End:
+
+%  LocalWords:  Abelian isometry homomorphism isomorphism bijection
+%  LocalWords:  tuple
