@@ -282,3 +282,4 @@ data/
 output/
 input/
 *.o
+*.history/

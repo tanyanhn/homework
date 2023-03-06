@@ -1,0 +1,21 @@
+\exc Compute $\lVert D_+ D_- \rVert_h$.
+
+\begin{solution}
+    Firstly, we have 
+    \begin{align*}
+        \lVert D_+ D_- \rVert_h \leq
+         \lVert D_+ \rVert_h \lVert D_- \rVert_h
+         = \frac{4}{h^2}
+    \end{align*}
+    Then, let $u_j = (-1)^j$, consider
+    \begin{align*}
+        \lVert D_+ D_- u \rVert_h^2 
+        &= \sum_j ((E - 2E_0 + E^{-1})u_j)^2 / h^4 \\
+        &= \sum_j 16/ h^4 = \sum_j 16/ h^4 \lVert u \rVert_h^2
+    \end{align*}.
+    That means 
+    \[\lVert D_+ D_- \rVert_h \geq
+     \sqrt{\frac{\lVert D_+ D_- u \rVert_h^2 }
+     { \lVert u \rVert_h^2}} = \frac{2}{h^2} \].
+    In summary, $\lVert D_+ D_- \rVert_h = \frac{2}{h^2}$. 
+\end{solution}
