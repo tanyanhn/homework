@@ -283,3 +283,6 @@ output/
 input/
 *.o
 *.history/
+*.asv
+*.zip
+*.tar.gz

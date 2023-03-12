@@ -8,5 +8,8 @@ Q = (1 - (k * k) / (h * h)) * E ...
     + ((k * k) / (2 * h * h) + k / (2 * h)) * circshift(E, [1, 0])...
     + ((k * k) / (2 * h * h) - k / (2 * h)) * circshift(E, [-1, 0]);
 
-vn =  Q^n * v0;  
+vn(:, 1) = v0;
+for i = 2:(n + 1)
+    vn(:, i) = Q * vn(:, i - 1);  
+end
 end
