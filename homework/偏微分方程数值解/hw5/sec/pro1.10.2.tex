@@ -1,0 +1,47 @@
+\exc Derive the stability condition for the Euler 
+approximation to $u_t = u_{xx} +
+u_{yy} + u_{zz}$ . Prove that the DuFort-Frankel 
+method is unconditionally stable for the same equation.
+
+\begin{solution}
+  \begin{itemize}
+    \item 
+  Euler approximation is 
+  \[v_j^{n+1} = (I + k(D_{+x}D_{-x}+ D_{+y}D_{-y}+
+  D_{+y}D_{-y}) )v_j^n.\]
+  By already know $kD_{+}D_{-} e^{i\omega x_j} = -4\sigma \sin^2
+   \frac{\xi }{2} e^{i\omega x_j} $,
+   where $\sigma = k/h^2, \xi = \omega h$. Get the symbol 
+   \[\hat{Q} = 1 - 4\sigma ( \sin^2\frac{\xi_x }{2} +
+   \sin^2\frac{\xi_y }{2} + sin^2\frac{\xi_z }{2}).\]
+   
+   Stable condition $| \hat{Q}| < 1$ imply
+     \[\frac{k}{h^2} = \sigma < \frac{1}{6}.\]
+
+\item DuFort-Frankel method is 
+ \[v_j^{n+1} = \frac{1}{1 + 6\sigma}(
+   2\sigma(D_{+x} + D_{-x} + D_{+y} + D_{-y}+
+   D_{+y} + D_{-y}) v_j^{n} + (1 - 6\sigma )v_j^{n-1}).\]
+
+   Now the characteristic equation is
+   \[z^2 - \frac{4\sigma}{1 + 6\sigma}(\cos \xi_1 
+   + \cos \xi_2 + \cos \xi_3)z - \frac{1 - 6\sigma}{1 + 6\sigma} = 0.\]
+   that is,
+   \[z_{1, 2} = \frac{2\sigma}{1 + 6\sigma}(\sum \cos\xi)
+   \pm \frac{1}{1 + 6\sigma}\sqrt{A},\]
+   where $A = 4\sigma^2(\sum \cos \xi)^2  + 1 - 36\sigma^2$.
+    If $|A| \geq 0$, then $|A| \le 1$, and 
+    \[|z_{1, 2}| \le \frac{6 \sigma}{1 + 6\sigma} + \frac{1}{1 + 6\sigma} = 1.\]
+
+    If $|A| \le 0$, then we write 
+    \[z_{1, 2} = \frac{1}{1 + 6\sigma}(2\sigma(
+      \sum \cos \xi
+    ) \pm i \sqrt{-A}).\]
+
+    and get 
+    \[|z_{1, 2}| = \frac{36 \sigma^2 - 1 }{(1 + 6 \sigma)^2}
+    = \frac{6\sigma -1}{6\sigma +1} \le 1.\]
+    That means DuFort-Frankel method is unconditionally stable.
+    \end{itemize}
+\end{solution}
+
