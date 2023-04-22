@@ -1,0 +1,25 @@
+\exc Derive the stability condition 
+for Simpson’s rule (2.2.10) when used for
+the equation $u_t = u_x$ with $Q_4$ .
+
+\begin{solution}
+ the characteristic equation is 
+  \[(1 - \frac{\mu}{3}) z^2 - \frac{4 \mu}{3} z 
+    - (1 + \frac{\mu}{3}) = 0. \]
+    with two roots be 
+    \[|z_{1, 2}| = |\frac{2\mu \pm \sqrt{3\mu^2 + 9}}
+    {3 - \mu}| \leq 1 .\]
+    have $|2\mu + \sqrt{3\mu^2 + 9}| \leq |3 - \mu|$ 
+    and $ |2\mu - \sqrt{3\mu^2 + 9}| \leq |3 - \mu|$ get 
+    $Re\ \mu = 0$, and $|Im\ \mu| \leq \sqrt{3}$.
+
+    By $Q_4 = i \lambda \sin(\xi)(1 - \frac{2}{3} \sin^2 
+    \frac{\xi}{2})$, induce 
+    \[|\lambda \sin(\xi) (\frac{2}{3} - \frac{1}{3}
+    \cos \xi)| \leq \sqrt{3}.\]
+
+    Solve it $ \frac{k}{h} = \lambda \leq
+     \sqrt[4]{27}(\sqrt{6} - \sqrt{2})$
+    
+
+\end{solution}
