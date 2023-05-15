@@ -1,0 +1,27 @@
+\exc Prove that there are positive
+ constants $\delta , K$ such that the
+ solutions to a
+parabolic system $u_t = Au_{xx}$ satisfy
+
+\[\| u (\cdot, t)\|^2 +\delta \int_0^t \|u_x 
+(\cdot, \xi) \|^2 d\xi \leq K \|u(\cdot, 0)\|^2\]
+
+
+\begin{solution}
+    By Fourier transform, need to prove
+    \begin{align*}
+      &\| \hat{u} (\cdot, t)\|^2 + \delta \omega^2 \int_0^t \| \hat{u} (\cdot, \xi) \|^2 d\xi \leq K \|\hat{u}(\cdot, 0)\|^2 \\
+    \Longleftrightarrow \qquad
+     & 
+     e^{2\hat{P}(i\omega)t} + \delta \omega^2 
+     \int e^{2\hat{P}(i\omega)t}  \leq K \\
+     \Longleftarrow \qquad 
+     & e^{-\delta \omega^2t} +  \delta \omega^2 \int 
+     e^{-\delta \omega^2t} \leq K
+    \end{align*}
+    
+    take properly integral constant $K$ get last equation, 
+    second From parabolic system, for every eigenvalues
+    $\lambda$ of $A$ satisfy Re $\lambda \geq \delta / 2$.
+
+\end{solution}

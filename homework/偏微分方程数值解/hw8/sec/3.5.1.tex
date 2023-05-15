@@ -1,0 +1,21 @@
+\exc Consider the first-order system 
+$u_t = Au_x$ . Is it possible that the Petrovskii
+condition (3.1.12)
+ is satisfied for some constant 
+ $\alpha > 0$ but not for $\alpha = 0$?
+
+
+\begin{solution}
+    Assume $A$ is satisfied
+    however exist eigenvalues $\lambda$ of 
+    $\hat{P}(i\omega)$ such that 
+    $0 < \text{Re } \lambda \leq \alpha$, take $v$ is 
+    eigenvector of $\lambda$, so 
+    \[\hat{P}(i \omega)v = i A \omega v = \lambda v\]
+
+    that imply exist a eigenvalues $\lambda_1$
+    have $ - \alpha / \omega \leq \lambda_1 < 0$. 
+    Let $\omega \rightarrow + \infty  $, $\lambda_1$
+    can't be a negative value. which is contradict with 
+    $\lambda_1 < 0$.
+\end{solution}
