@@ -1,0 +1,21 @@
+\exc Consider the differential equation
+\[\frac{\partial u}{\partial t} = \sum_{j = 0}^{4}a_j \frac{\partial^j u}{\partial x^j} \]
+Derive the condition for stability corresponding to Eq. (3.2.3). Is it true
+that the problem is always stable if Re $a_4 < 0$ ?
+
+\begin{solution}
+  Like Eq. (3.2.3) we are going prove exist Real $\alpha$ such that
+  \[\text{Re } \kappa < \alpha, \qquad \kappa := a_4 \omega ^4 
+  - ia_3 \omega^3 - a_2 \omega^2 + ia_1 \omega + a_0, 
+  \text{For all Real } \omega.\]
+
+  If Re $a_4 < 0$, there is exist a Real $W$, 
+    such that $\forall |\omega| > W, \text{Re } \kappa < 0$.
+
+    So Take $\alpha = |a_4 W^4| + |a_3 W^3| + |a_2 W^2| + 
+    |a_1 W| + |a_0|$ will satisfy $\text{Re } \kappa < \alpha$.
+
+    Which means the problem is always stable.
+
+
+\end{solution}
