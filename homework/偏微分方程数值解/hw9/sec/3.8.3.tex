@@ -1,0 +1,19 @@
+\exc Consider the linearized one-dimensional 
+Euler equations, where $U = 0$
+and $R$ is a constant.
+ Prove that the system represents two “sound-waves”
+moving with the velocities $±a(R)$.
+
+
+\begin{solution}
+    By (3.7.5), take $u = U = \rho_x = v_x = 0$ the system is 
+    \begin{align*}
+      v_t &= V v_y +\frac{a^2(R)}{R} \rho_y \\
+      \rho_t &= R v_y + V \rho_y
+    \end{align*}
+    Solve this get 
+    \begin{align*}
+      v &= \pm a(R)(y + (\pm a(R) + V)t) \\
+      \rho &= R(y + (\pm a(R) + V)t)
+    \end{align*}
+\end{solution}

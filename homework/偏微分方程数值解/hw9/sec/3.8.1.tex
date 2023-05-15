@@ -1,0 +1,24 @@
+\exc Let $B(x, t)$ be a Hermitian matrix 
+and let $C(x, t)$ be a skew-Hermitian
+matrix. Prove that the system
+    \[u_t = (Bu)_x + Bu_x +Cu\]
+is energy conserving that is 
+ \[\lVert u(\cdot, t) \rVert = \lVert u(\cdot, 0) \rVert\]
+
+\begin{solution}
+    consider semibounded and $B$ is Hermitian, $C$
+    is skew-Hermitian.
+    \begin{align*}
+        (Pu, u) + (u, Pu) 
+        &= ((Bu)_x, u) + (Bu_x, u) + (Cu, u) + 
+           (u, (Bu)_x) + (u, Bu_x) + (u, Cu) \\
+           &= -(Bu, u_x) + (Bu_x, u) - (u_x, Bu) + (u, Bu_x) 
+           + (C + C^*) (u, u) \\
+           &= -(Bu, u_x) + (Bu_x, u) - (Bu_x, u) + (Bu, u_x) \\
+           &= 0 * \lVert u \rVert
+    \end{align*}0
+    so we have $\lVert u(\cdot, t) \rVert \leq 
+    e ^{0 t} \lVert f(x) \rVert = \lVert u(\cdot, 0) \rVert$.
+    And change system sign, revert $u(\cdot, t)$ to $u(\cdot, 0)$
+    have same condition. so it's conserving.
+\end{solution}
