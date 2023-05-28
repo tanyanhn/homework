@@ -1,0 +1,25 @@
+\exc Use the energy method to prove stability
+\[v_j^{n + 1} = (I + ka_j D_+) v_j^n, \qquad a_j > 0.\]
+
+
+\begin{solution}
+  In this method $Q = ka_jD_+, A = \texttt{diag}(ka_j)$. 
+  
+  Since $A$ is symmetric, $D_+A = A D_+$, so
+    \begin{align*}
+      (u, AD_+ u)_h &= (u, D_+A u)_h \\
+      &=-(D_- u, Au)_h  \\
+      &=-(AD_- u, u)_h \\ 
+      &=-(Au, u) + (E^-1 u, u) \\
+      &=-(Au, u) + (E u, u) \\
+      &= -(AD_+ u, u)
+    \end{align*}.
+    Which implies $(u, AD_+ u)_h = 0$. the Remain is 
+    same as (4.1.13). By $\|u(t)\| = \|u(0)\|$.
+    \begin{align*}
+      \frac{d}{dt} \|u(t)\|_h = 2(u, Q u)_h \leq 0.
+    \end{align*}
+    Combine with Definition 4.1.3, get the method $Q$
+    is stable.
+
+\end{solution}
